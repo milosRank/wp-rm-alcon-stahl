@@ -1,0 +1,110 @@
+/*
+    ==== CONTACT ====
+
+    Description: 
+        Contact section.
+    
+    Modificators:
+        
+    1. Section background image
+
+        Description:             Set background image for this section
+        Hook element selector:   .contact
+        Class to add:            contact-img-backgroun
+*/
+
+.contact {
+    padding-top: 150px;
+    padding-bottom: 150px;
+
+    // ==== Modificator 1. ====
+    &.contact-img-background {
+        background-image: url("../img/corporate/contact-form-bg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .form__inner {
+        max-width: 785px;
+        margin: 0 auto;
+        color: $white;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        a,
+        p,
+        label,
+        input {
+            color: inherit;
+        }
+
+        .title {
+            margin-bottom: 15px;
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin-bottom: 0;
+            }
+        }
+
+        .subtitle {
+            margin-bottom: 32px;
+
+            p {
+                font-family: $font-primary-italic;
+                font-weight: 300;
+            }
+        }
+
+        .input-wrapper {
+            display: block;
+            margin-bottom: 32px;
+
+            input {
+                width: 100%;
+            }
+        }
+
+        textarea {
+            width: 100%;
+            margin-bottom: 32px;
+        }
+
+        button[type="submit"],
+        input[type="submit"],
+        a.button {
+            padding-left: 48px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            transform: 0.2s ease;
+
+            &::before {
+                @include pseudo("",14px,13px,absolute);
+                left: 23px;
+                top: 50%;
+                transform: translateY(-50%);
+                background-image: url("../img/icons/button/icon--arrow-right-white.svg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            &:hover {
+                transform: scale(1.1);
+                transform: 0.2s ease;
+                background-color: transparent;
+            }
+
+            // &:hover::before {
+            //     background-image: url("../img/icons/button/icon--arrow-right-blue.svg");
+            // }
+        }
+    }
+}

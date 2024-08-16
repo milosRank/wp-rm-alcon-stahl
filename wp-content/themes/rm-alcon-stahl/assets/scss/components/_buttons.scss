@@ -1,0 +1,147 @@
+/*
+    ==== BUTTONS ====
+
+    Component description:
+        All types of buttons
+    
+    Modificators:
+    
+    1. Primary button
+
+        Description:             Primary button styles
+        Hook element selector:   button,a
+        Class to add:            .button--primary
+*/
+
+$button-color-gray: #070d1d33;
+$button-color-white: #FCFBFB;
+$button-color-blue: #070D1D;
+
+.dropdown-button {
+    min-width: unset;
+    border: 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+
+    &.active {
+        transform: rotate(180deg);
+        transition: 0.2s ease-out;
+    }
+}
+
+button,
+.button {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    min-width: 120px;
+    padding: 15px 23px;
+    border: 1px solid transparent;
+    border-radius: 60px;
+    outline: none;
+    background-color: transparent;
+    @include font($font-primary-light,initial, $small,$small);
+    text-align: center;
+    transition: 0.3s ease;
+    cursor: pointer;
+    
+    &:hover {
+        transition: 0.3s ease;
+    }
+}
+
+a.button {
+    display: inline-block;
+
+    &:hover {
+        text-decoration: none
+    }
+}
+
+// ==== Modificator 1. ====
+.button--primary {
+    background-color: $button-color-gray;
+    color: $button-color-white;
+    border-color: $button-color-white;
+
+    &:hover {
+        background-color: $button-color-white;
+        color: $button-color-blue;
+        border-color: 1px solid transparent;
+    }
+}
+
+// ==== Modificator 2. ====
+.button--secondary {
+    background-color: transparent;
+    color: $button-color-white;
+    border-color: $button-color-white;
+    
+    &:hover {
+        background-color: $button-color-white;
+        border-color: transparent;
+        color: $button-color-blue;
+    }
+}
+
+// ==== Modificator 3. ====
+.button--tertiary {
+    background-color: transparent;
+    color: $button-color-blue;
+    border-color: $button-color-blue;
+    
+    &:hover {
+        background-color: $button-color-blue;
+        border-color: transparent;
+        color: $button-color-white;
+    }
+}
+
+.button.big-arrow-down {
+    padding-right: 45px;
+    transition: background-color 0.3s ease;
+
+    &::after {
+        @include pseudo("",17px,18px,absolute);
+        background-image: url("../img/icons/button/icon--big-arrow-down-white.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+
+    &:hover {
+        transition: background-color 0.3s ease;
+    }
+
+    &:hover::after {
+        background-image: url("../img/icons/button/icon--big-arrow-down-blue.svg");
+    }
+}
+
+.button-diagonal-arrow-down {
+    padding-left: 51px;
+    border: 1px solid $sixth-color;
+    color: $sixth-color;
+    transition: 0.3s ease;
+
+    &::after {
+        @include pseudo("",16px,16px,absolute);
+        background-image: url("../img/icons/button/icon--big-diagonal-arrow-down-blue.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        transition: 0.3s ease;
+    }
+} 

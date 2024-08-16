@@ -1,0 +1,137 @@
+/*
+    ==== MAP AND TEXT ====
+
+    Description: 
+        Section that holds map and additional text box.
+    
+    Modificators:
+        No modificators.
+*/
+
+.map-and-text {
+    margin-top: 300px;
+    margin-bottom: 300px;
+
+    .map-and-text__inner {
+        display: grid;
+        grid-template-columns: 784px auto;
+
+        .map {
+
+            iframe {
+                max-width: 100%;
+            }
+        }
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            padding-left: 168px;
+            
+            .title {
+                margin-bottom: 45px;
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    margin-bottom: 0;
+                }
+            }
+
+            .location {
+                margin-bottom: 50px;
+            }
+
+            .contact-info {
+
+                .line-separator {
+                    width: 200px;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
+
+                a {
+                    display: block;
+                    margin-bottom: 7px;
+                }
+            }
+
+            ul.pdf-list {
+                margin-top: auto;
+            }
+        }
+    }
+}
+
+
+
+// RESPONSIVE
+
+@media(max-width: 1600px) {
+
+    .map-and-text {
+
+        .map-and-text__inner {
+            
+            .text {
+                padding-left: 60px;
+            }
+        }
+    }
+}
+
+
+@media(max-width: 1400px) {
+
+    .map-and-text {
+
+        .map-and-text__inner {
+            grid-template-columns: repeat(2,1fr);
+        }
+    }
+}
+
+@media(max-width: 991px) {
+
+    .map-and-text {
+        margin-top: 100px;
+        margin-bottom: 100px;
+
+        & + .map-and-text {
+            margin-top: 150px;
+        }
+
+        .map-and-text__inner {
+            grid-template-columns: 1fr;
+
+            .text {
+                margin-bottom: 50px;
+                padding-left: 0;
+                order: -1;
+
+                ul.pdf-list {
+                    margin-top: 40px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 576px) {
+
+    .map-and-text {
+
+        .map-and-text__inner {
+
+            .map {
+                
+                iframe {
+                    height: 300px;
+                }
+            }
+        }
+    }
+}

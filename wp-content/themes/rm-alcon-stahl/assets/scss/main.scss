@@ -1,0 +1,97 @@
+/*
+ 	Project: RM Alkon Stahl
+	Developed by: Milos Rankovic
+
+	Table of content:
+	01. Variables (All combined from subfolders)
+	02. Mixins
+	03. Fonts
+	04. Background colors
+	05. Global CSS
+	06. Partials
+	07. Components
+	08. Sections
+	09. Page specifics
+	10. Spacings
+
+*/
+
+
+
+/* 
+	==== Variables ==== 
+*/
+
+@import "./variables";
+
+
+
+/* 
+	==== Mixins ==== 
+*/
+
+@import "./mixins/mixins";
+
+
+
+/* 
+	==== Fonts ==== 
+*/
+
+@import "./fonts/font-family";
+
+
+
+/* 
+	==== Backgrounds ==== 
+*/
+
+@import "./backgrounds/background-colors";
+
+
+
+/* 
+	==== Global ==== 
+*/
+
+@import "./global";
+
+
+
+/* 
+	==== Partials ==== 
+*/
+
+@import "./partials/partials";
+
+
+
+/* 
+	==== Components ==== 
+*/
+
+@import "./components/allcomponents";
+
+
+
+/* 
+	==== Sections ==== 
+*/
+
+@import "./sections/allsections";
+
+
+
+/* 
+	==== Page specifics ==== 
+*/
+
+@import "./page-specifics/page-specifics";
+
+
+
+/* 
+	==== Spacings ==== 
+*/
+
+@import "./spacing/spacing";

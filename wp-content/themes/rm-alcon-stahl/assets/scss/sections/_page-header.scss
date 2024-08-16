@@ -1,0 +1,78 @@
+/*
+    ==== PAGE HEADER ====
+
+    Description: 
+        Page headers of website.
+    
+    Modificators:
+        No modificators.
+*/
+
+.page-header {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    margin-bottom: 250px;
+
+    .title {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: $extra-large;
+            color: $white;
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+
+// Page header background
+
+.page-header {
+
+    &.page-header-bg {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    &.page-header-bg--nerdjajuci-celici {
+        @extend.page-header-bg;
+        background-image: url("../img/page-header/page-header-bg--nerdjajuci-celici.jpg");
+    }
+
+    &.page-header-bg--ystral-mixing {
+        @extend.page-header-bg;
+        background-image: url("../img/page-header/page-header-bg--ystral-mixing.jpg");
+    }
+
+    &.page-header-bg--contact {
+        @extend.page-header-bg;
+        background-image: url("../img/page-header/page-header-bg--contact.jpg");
+    }
+
+    &.page-header-bg--preuzmi {
+        @extend.page-header-bg;
+        background-image: url("../img/page-header/page-header-bg--preuzmi.jpg");
+    }
+
+    &.page-header-bg--pumpe {
+        @extend.page-header-bg;
+        background-image: url("../img/page-header/page-header-bg--pumpe.jpg");
+    }
+}
+
+
+
+// RESPONSIVE
+
+@media(max-width: 991px) {
+
+    .page-header {
+        margin-bottom: 100px;
+    }
+}

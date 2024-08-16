@@ -1,0 +1,135 @@
+.hero-section {
+    min-height: calc(100vh - 122px);
+    padding: 195px 0 163px 0;
+    background-color: $sixth-color;
+
+    .hero__inner {
+        margin: 0 205px;
+        padding-top: 30px;
+        background-image: url("../img/hero/hero-section-background.jpg");
+        background-repeat: no-repeat;
+        background-position: 100% 0;
+        background-size: 656px 654px;
+    }
+
+    .hero__inner .hero__title {
+        margin-bottom: 345px;
+        color: $white;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: 5.6rem;
+            line-height: 75px;
+            margin-bottom: 0;
+            color: inherit;
+        }
+
+        .subtitle {
+            margin-top: 24px;
+            color: inherit;
+            font-family: $font-primary-light-italic;
+            font-size: 2.4rem;
+            line-height: 3.2rem;
+        }
+    }
+
+    .button--secondary {
+        transition: 0.2s ease;
+       
+       &.big-arrow-down:hover::after {
+            background-image: url("../img/icons/button/icon--big-arrow-down-white.svg") !important;
+        }
+
+        &:hover {
+            transition: 0.2s ease;
+            transform: scale(1.1);
+            background-color: transparent;
+            color: #fff;
+            border-color: white;
+        }
+    }
+}
+
+
+
+// RESPONSIVE
+
+@media(max-width: 1400px) {
+
+    .hero-section {
+        padding: 75px 0;
+
+        .hero__inner .hero__title {
+            margin-bottom: 400px;
+        }
+    }
+}
+
+@media(max-width: 1199px) {
+
+    .hero-section {
+        background-image: url("../img/hero/hero-section-background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+
+        &::before {
+            @include pseudo("",100%,100%,absolute);
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: #0A1839BF;
+        }
+
+        .container-fluid {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero__inner {
+            background-image: none;
+            margin: 0;
+            padding-top: 0;
+        }
+
+        .hero__inner .hero__title {
+            margin-bottom: 50px;
+        }
+    }
+}
+
+@media(max-width: 576px) {
+
+    .hero-section {
+        min-height: calc(100vh - 88px);
+        padding: 150px 0;
+
+        .hero__inner .hero__title {
+            text-align: center;
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-size: $large;
+                line-height: 4.6rem;
+                text-align: center;
+            }
+
+            .subtitle {
+                font-size: 1.8rem;
+            }
+        }
+
+        .cta-wrapper {
+            text-align: center;
+        }
+    }
+}

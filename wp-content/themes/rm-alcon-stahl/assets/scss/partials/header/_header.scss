@@ -1,0 +1,460 @@
+/*
+    ==== HEADER ====
+
+    Description: 
+        This is header of website. Also, this file contains style header dropdown.
+    
+    Modificators:
+
+    1. Hide header
+
+        Description:             Hides header
+        Hook element selector:   header
+        Class to add:            hide
+
+    2. Floating header
+
+        Description:             Sets behaviour of header when user scroll the page
+        Hook element selector:   header
+        Class to add:            floating-header
+        
+    3. Header background color
+
+        Description:             Sets background color of the header
+        Hook element selector:   header
+        Class to add:            bg-white || bg-navy-blue |\ | bg-transparent
+*/
+
+header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-size: 16px;
+    transition:  0.2s ease-out;
+    z-index: 100;
+    min-height: 122px;
+    
+
+    // ==== Modificator 1. ====
+    &.hide {
+        transform: translateY(-100%);
+        transition: 0.2s ease-out;
+    }
+
+    // ==== Modificator 3. ====
+    &.bg-navy-blue:not(.floating-header) {
+        background-color: $sixth-color;
+        box-shadow: none;
+
+        .links-holder .links-holder__inner a {
+            color: $white;
+        }
+
+        .dropdown-button svg path {
+            fill: $white;
+        }
+
+        .site-logo .logo__figure {
+            fill: $white;
+        }
+
+        .site-logo .logo__text {
+            fill: $white;
+        }
+    }
+
+    &.bg-navy-blue.floating-header {
+        background-color: $white;
+        box-shadow: 0px 1px 20px 1px rgba(126, 126, 126, 0.25);
+        transition: 0.2s ease-out;
+
+        .site-logo .logo__figure {
+            fill: #6D6D6D;
+        }
+
+        .site-logo .logo__text {
+            fill: #104867;
+        }
+
+        .hamburger-icon,
+        .close-icon {
+            
+            svg path {
+                fill: $sixth-color;
+            }
+        }
+    }
+
+    // ==== Modificator 3. ====
+    &.bg-transparent {
+        background-color: transparent;
+
+        .hamburger-icon,
+        .close-icon {
+            
+            svg path {
+                fill: $white;
+            }
+        }
+    }
+
+    // ==== Modificator 3. ====
+    &.bg-white {
+        box-shadow: 0px 1px 20px 1px rgba(126, 126, 126, 0.25);
+
+        .site-logo .logo__figure {
+            fill: #6D6D6D;
+        }
+
+        .site-logo .logo__text {
+            fill: #104867;
+        }
+
+        .hamburger-icon,
+        .close-icon {
+            
+            svg path {
+                fill: $sixth-color;
+            }
+        }
+    }
+
+    // ==== Modificator 3. ====
+    &.bg-navy-light-blue {
+        background-color: $navy-light-blue;
+        box-shadow: none;
+
+        .site-logo .logo__figure {
+            fill: $white;
+        }
+
+        .site-logo .logo__text {
+            fill: $white;
+        }
+
+        .links-holder .links-holder__inner a {
+            color: $white;
+        }
+
+        .dropdown-button path {
+            fill: $white;
+        }
+    }
+
+    .header {
+        padding: 40px 0;
+    }
+
+    .header__inner {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-holder {
+        margin-right: 175px;
+    }
+
+    .site-logo {
+        
+        &.mobile {
+            display: none;
+        }
+    }
+
+    .mobile-menu-cta {
+        display: none;
+
+        button {
+            display: none;
+            min-width: unset;
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            font-size: 0;
+            line-height: 0;
+
+            &.active {
+                display: inline-block;
+            }
+        }
+    }
+
+    .links-holder .links-holder__inner {
+
+        ul {
+            display: flex;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        ul.active {
+            display: block !important;
+        }
+
+        nav > ul > li > ul {
+            display: none;
+            position: absolute;
+        }
+
+        ul li {
+            list-style: none;
+            margin-right: 50px;
+            position: relative;
+        }
+
+        ul li.dropdown-parent {
+            padding-right: 18px;
+        }
+
+        ul li:last-child {
+            margin-right: 0;
+        }
+
+        ul li .dropdown-button {
+            padding: 10px;
+            position: absolute;
+            right: -10px;
+            top: 0;
+        }
+
+        a {
+            color: $secondary-color;
+            scroll-behavior: smooth;
+        }
+    }
+}
+
+// ==== Modificator 2. ====
+header.floating-header {
+    transition: transform 0.2s ease-out;
+}
+
+// Dropdown start
+header .links-holder  {
+
+    .header__links-list > .dropdown-parent > ul {
+        background-color: #060E26;
+        position: absolute;
+        padding: 20px 40px;
+        z-index: 2;
+        min-width: 375px;
+        left: -40px;
+        top: calc(100% + 50px);
+        color: $white;
+        border-radius: 3px;
+        // max-height: 520px;
+        // overflow-y: scroll;
+        // -ms-overflow-style: none;
+        // scrollbar-width: none;
+    
+        // &::-webkit-scrollbar {
+        //     display: none;
+        // }
+
+        &::before {
+            @include pseudo("",32px,16px,absolute);
+            background-image: url("../img/icons/icon--header-dropdown-triangle-blue.svg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            top: -16px;
+            left: 40px;
+        }
+
+        li {
+            margin-right: 0;
+            position: relative;
+        }
+
+        & > li {
+            padding: 20px 0 20px 28px;
+            color: $white;
+
+            &::before {
+                @include pseudo("",17px,17px,absolute);
+                left: 0;
+                top: 23px;
+                background-image: url("../img/logos/site-logo--mini-white.svg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            &::after {
+                @include pseudo("",100%,1px,absolute);
+                background-color: rgba(252, 251, 251, 0.3);
+                left: 0;
+                bottom: 0;
+            }
+
+            &:last-child::after {
+                content: none;
+            }
+
+            a {
+                color: $white;
+            }
+
+            .dropdown-button {
+                position: static;
+            }
+
+            .dropdown-button svg path {
+                fill: $white;
+            }
+        }
+
+        & > li:last-child {
+            border-bottom: none;
+        }
+    }
+
+    // Third level
+    .header__links-list > .dropdown-parent > ul > li > ul {
+        display: none;
+
+        & > li {
+            margin-bottom: 20px;
+
+            &:first-child {
+                margin-top: 40px;
+            }
+        }
+
+        a {
+            font-family: $font-primary-light-italic;
+        }
+    }
+}
+
+
+
+// RESPONSIVE
+
+@media(max-width: 1699px) {
+    
+    // TODO On this view convert header link into sidebar menu
+    header {
+
+        .header__inner {
+            justify-content: space-between;
+        }
+
+        .logo-holder {
+            margin-right: 0;
+        }
+
+        .mobile-menu-cta {
+            display: block;
+        }
+
+        .links-holder {
+            position: fixed;
+            background: $sixth-color;
+            right: 0;
+            top: 122px;
+            width: 428px;
+            display: none;
+            height: calc(100% - 122px);
+            overflow: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            &.active {
+                display: block;
+            }
+
+            .links-holder__inner a {
+                color: $white;
+            }
+
+            .dropdown-button svg path {
+                fill: $white;
+            }
+
+            .header__links-list > .dropdown-parent > ul {
+                top: calc(100% + 40px);
+            }
+        }
+        
+        .links-holder .links-holder__inner {
+            padding: 40px 40px 80px 40px;
+        }
+
+        .links-holder .links-holder__inner .header__links-list {
+            display: block;
+
+            li {
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+
+            li .dropdown-button {
+                position: static;
+                top: unset;
+                right: unset;
+                padding: 5px 8px;
+                vertical-align: middle;
+            }
+
+            // Second level
+            & > li > ul  {
+                width: 100%;
+                position: static;
+                min-width: unset;
+                padding-left: 0;
+                padding-right: 0;
+                padding-bottom: 0;
+                background-color: $sixth-color;
+
+                &::before {
+                    content: none;
+                }
+
+                & > li {
+                    margin-bottom: 0;
+                }
+
+                & > li:last-child {
+                    padding-bottom: 0;
+                }
+
+            }
+        }
+    }
+}
+
+@media(max-width: 576px) {
+    
+    header {
+        min-height: 88px;
+
+        .header {
+            padding: 30px 0;
+        }
+
+        .links-holder {
+            width: 100%;
+            top: 88px;
+            height: calc(100% - 88px);
+        }
+
+        .site-logo {
+        
+            &.mobile {
+                display: block;
+            }
+
+            &.desktop {
+                display: none;
+            }
+        }
+
+        .header__inner {
+            align-items: baseline;
+        }
+    }
+}

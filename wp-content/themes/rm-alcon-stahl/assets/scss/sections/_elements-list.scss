@@ -1,0 +1,120 @@
+/*
+    ==== ELEMENTS LIST ====
+
+    Description: 
+        Elements list section.
+    
+    Modificators:
+        No modificators.
+*/
+
+.elements-list {
+    padding-bottom: 200px;
+
+    .title {
+        margin-bottom: 40px;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 0;
+            font-size: 4rem;
+            line-height: 4rem;
+        }
+    }
+
+    .subtitle {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-gap: 10px;
+        align-items: flex-end;
+        margin-bottom: 40px;
+
+        p {
+            display: inline-block;
+            margin-bottom: 0;
+        }
+    
+        .line-decoration {
+            display: block;
+            background-color: #A7BFC7;
+            height: 1px;
+        }
+    }
+
+    .elements-holder {
+        display: grid;
+        row-gap: 150px;
+
+        .element {
+            margin-right: 32px;
+
+            .image-box {
+                margin-bottom: 20px;
+            }
+
+            .image-box.shadow {
+                filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.25));
+            }
+
+            &.last-child {
+                margin-right: 0;
+            }
+        }
+
+        &.items-6 {
+            grid-template-columns: repeat(6,1fr);
+        }
+
+        &.items-auto {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .title {
+            margin-bottom: 20px;
+
+            p {
+                font-family: $font-primary-medium;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .description {
+            margin-bottom: 50px;
+
+            p {
+                font-size: 1.6rem;
+            }
+        }
+    }
+}
+
+
+
+// RESPONSIVE
+
+@media(max-width: 767px) {
+
+    .elements-list {
+        padding-bottom: 100px;
+    }
+}
+
+@media(max-width: 547px) {
+
+    .elements-list {
+
+        .elements-holder {
+
+            .element {
+                margin-right: 0;
+            }
+        }
+    }
+}

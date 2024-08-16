@@ -1,0 +1,38 @@
+/*
+    ==== SEPARATOR ====
+
+    Component description:
+        Separator elements
+    
+    Modificators:
+    
+    1. Narrow separator
+
+        Description:             Set a narrow separator
+        Hook element selector:   .line-separator
+        Class to add:            narrow
+
+    2. Wide separator
+
+        Description:             Set a wide separator
+        Hook element selector:   .line-separator
+        Class to add:            wide
+*/
+
+.line-separator {
+    max-width: 100%;
+    height: 1px;
+    background-color: #A7BFC7;
+
+    &.narrow {
+        width: 30px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    &.wide {
+        width: 100%;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+}

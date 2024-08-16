@@ -1,0 +1,28 @@
+{
+    "name": "rm-alcon-stahl",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build-global": "sass assets/scss/_global.scss --style=expanded --quiet | postcss --use autoprefixer --no-map > assets/css/global.css",
+        "build-partials": "sass assets/scss/partials/_partials.scss --style=expanded --quiet | postcss --use autoprefixer --no-map > assets/css/partials.css",
+        "build-sections": "sass assets/scss/sections/_allsections.scss --style=expanded --quiet | postcss --use autoprefixer --no-map > assets/css/sections.css",
+        "build-page-specifics": "sass assets/scss/page-specifics/_page-specifics.scss --style=expanded --quiet | postcss --use autoprefixer --no-map > assets/css/page-specifics.css",
+        "build-components": "sass assets/scss/components/_allcomponents.scss --style=expanded --quiet | postcss --use autoprefixer --no-map > assets/css/components.css",
+        "build-chunks": "npm-run-all build-global build-partials build-sections build-page-specifics build-components",
+        "build-all": "sass assets/scss/main.scss --style=expanded --quiet | postcss --use autoprefixer --no-map > assets/css/main.css",
+        "build-bootstrap": "sass assets/scss/bootstrap.scss --style=expanded --quiet | postcss --use autoprefixer --no-map > assets/css/bootstrap.css"
+    },
+    "author": "Milos Rankovic",
+    "license": "ISC",
+    "devDependencies": {
+        "autoprefixer": "^10.4.13",
+        "postcss": "^8.4.21",
+        "postcss-cli": "^10.1.0"
+    },
+    "dependencies": {
+        "bootstrap": "^5.3.2",
+        "latest": "^0.2.0",
+        "sass": "^1.69.5"
+    }
+}
