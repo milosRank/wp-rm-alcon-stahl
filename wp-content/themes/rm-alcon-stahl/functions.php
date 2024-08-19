@@ -55,4 +55,4 @@ add_action('wp_enqueue_scripts', 'enqueue_scripts');
  * The 'after_setup_theme' action hook is used to register custom navigation
  * menus and possibly other theme setup tasks.
  */
-add_action('after_setup_theme', 'register_nav_menus');
+add_action('after_setup_theme', 'register_menus');
