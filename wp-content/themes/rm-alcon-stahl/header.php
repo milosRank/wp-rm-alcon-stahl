@@ -104,61 +104,18 @@
                                 <div class="links-holder">
                                     <div class="links-holder__inner">
                                         <nav>
-                                            <ul class="header__links-list">
-                                                <li>
-                                                    <a href="index.php#o-nama">O nama</a>
-                                                </li>
-                                                <li>
-                                                    <a href="nerdjajuci-celici.php">Nerđajući čelici (Inox materijali)</a>
-                                                    <ul>
-                                                        <li><a href="nerdjajuci-celici.php#inox-limovi">Inox limovi</a></li>
-                                                        <li><a href="nerdjajuci-celici.php#inox-sipke-i-profili">Inox šipke i profili</a></li>
-                                                        <li><a href="nerdjajuci-celici.php#inox-cevi">Inox cevi</a></li>
-                                                        <li><a href="nerdjajuci-celici.php#inox-fitinzi-i-prirubnice">Inox fitinzi i prirubnice</a></li>
-                                                        <li><a href="nerdjajuci-celici.php#inox-ventili-i-armatura">Inox ventili i armatura</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="staklene-ograde.php">Staklene ograde</a>
-                                                </li>
-                                                <li>
-                                                    <a href="ystral-mixing.php">YSTRAL Mixing solutions</a>
-                                                </li>
-                                                <li>
-                                                    <a href="pumpe.php">Pumpe</a>
-                                                    <ul>
-                                                        <li><a href="vijcane-pumpe.php">Vijčane pumpe</a></li>
-                                                        <li>
-                                                            <a href="centrifugalne-pumpe.php">Centrifugalne pumpe</a>
-                                                            <ul>
-                                                                <li><a href="centrifugalne-pumpe-sa-zaptivacima-vratila.php">Pumpe sa zaptivačima vratila</a></li>
-                                                                <li><a href="centrifugalne-pumpe-sa-magnetnom-spojnicom.php">Pumpe sa magnetnom spojnicom</a></li>
-                                                                <li><a href="centrifugalne-pumpe-koje-su-potopljene-u-fluid.php">Pumpe koje su potopljene u fluid</a></li>
-                                                                <li><a href="centrifugalne-pumpe-visestepene.php">Višestepene pumpe</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="aksijalne-ili-propelerne.php">Aksijalne ili propelerne</a></li>
-                                                        <li>
-                                                            <a href="zavojne-pumpe.php">Zavojne pumpe</a>
-                                                            <ul>
-                                                                <li><a href="pumpe-za-preradu-otpadnih-voda-i-otpadnih-hemikalija.php">Pumpe za preradu otpadnih voda i otpadnih hemikalija</a></li>
-                                                                <li><a href="dozirne-pumpe.php">Dozirne pumpe</a></li>
-                                                                <li><a href="zavojne-pumpe-za-prehrambenu-industriju.php">Pumpe za prehrambenu industriju</a></li>
-                                                                <li><a href="zavojne-pumpe-za-razne-industrije.php">Pumpe za razne industrije</a></li>
-                                                                <li><a href="zavojne-pumpe-vertikalne.php">Vertikalne pumpe</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="peristalticke-pumpe.php">Peristaltičke pumpe</a></li>
-                                                        <li><a href="macenatori.php">Macenatori</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="contact.php">Kontakt</a>
-                                                </li>
-                                                <li>
-                                                    <a href="preuzmi.php">Preuzmi</a>
-                                                </li>
-                                            </ul>
+                                        <?php 
+
+                                            if(has_nav_menu('header'))
+                                                {
+                                                    wp_nav_menu([
+                                                        'theme_location' 	=> 'header',
+                                                        'menu_class' 		=> 'header__links-list',
+                                                        'container' 		=> '',
+                                                    ]);
+                                                }
+
+                                            ?>
                                         </nav>
                                     </div>
                                 </div> <!-- Links holder end -->

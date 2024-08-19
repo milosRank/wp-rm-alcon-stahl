@@ -26,63 +26,51 @@
                         <div class="footer__content-holder">
                             <div class="footer__content-holder__inner">
 
+                                <?php if(has_nav_menu('footer_menu_primary')): ?>
+
                                 <!-- Box menu start -->
                                 <div class="box box__menu">
                                     <div class="box__title">
-                                        <h3>Meni</h3>
+                                        <h3><?php echo wp_get_nav_menu_name('footer_menu_primary'); ?></h3>
                                     </div>
                                     <div class="box__content">
                                         <nav>
-                                            <ul>
-                                                <li><a href="index.php#o-nama">O nama</a></li>
-                                                <li><a href="nerdjajuci-celici.php">Nerđajući čelici (Inox materijali)</a></li>
-                                                <li><a href="staklene-ograde.php">Staklene ograde</a></li>
-                                                <li><a href="ystral-mixing.php">YSTRAL Mixing solutions</a></li>
-                                                <li><a href="pumpe.php">Pumpe</a></li>
-                                                <li><a href="contact.php">Kontakt</a></li>
-                                                <li><a href="preuzmi.php">Preuzmi</a></li>
-                                            </ul>
+                                        <?php 
+
+                                            wp_nav_menu([
+                                                'theme_location' 	=> 'footer_menu_primary',
+                                                'container' 	    => '',
+                                            ]);
+
+                                        ?>
                                         </nav>
                                     </div>
                                 </div> <!-- Box menu end -->
 
-                                <!-- Box contact start -->
-                                <div class="box box__contact">
+                                <?php endif; ?>
+
+                                <?php if(has_nav_menu('footer_menu_secondary')): ?>
+
+                                <!-- Box menu start -->
+                                <div class="box box__menu">
                                     <div class="box__title">
-                                        <h3>Kontakt</h3>
+                                        <h3><?php echo wp_get_nav_menu_name('footer_menu_secondary'); ?></h3>
                                     </div>
                                     <div class="box__content">
+                                        <nav>
+                                        <?php 
 
-                                        <!-- Subarea start -->
-                                        <div class="box__content-subtitle">
-                                            <h4>Prodaja i administracija</h4>
-                                        </div>
-                                        <p>Stevana Brakusa 4, 11030 Beograd</p>
-                                        <div class="phone-contact">
-                                            <a href="tel:+381117540847">+381-(0)11/7540-847</a>
-                                            <a href="tel:+381117549607">+381-(0)11/7549-607</a>
-                                            <a href="tel:+381117554483">+381-(0)11/7554-483</a>
-                                            <a href="tel:+381117555686">+381-(0)11/7555-686</a>
-                                            <a href="tel:+381113055488">+381-(0)11/3055-488</a>
-                                        </div>
-                                        <p>Radno vreme: <br> ponedeljak - petak od 8:00h do 16:00h</p>
-                                        <a href="mailto:office@rmalkon.co.rs">office@rmalkon.co.rs</a>
-                                        <!-- Subarea end -->
-                                        
-                                        <!-- Separator -->
-                                        <div class="line-separator narrow"></div>
+                                            wp_nav_menu([
+                                                'theme_location' 	=> 'footer_menu_secondary',
+                                                'container' 	    => '',
+                                            ]);
 
-                                        <!-- Subarea start -->
-                                        <div class="box__content-subtitle">
-                                            <h4>Magacin veleprodaje,mesto izdavanja robe</h4>
-                                        </div>
-                                        <p>Sesta industrijska br.2, 22330 Nova Pazova</p>
-                                        <p>Radno vreme: <br> ponedeljak - petak od 8:00h do 16:00h</p>
-                                        <a href="mailto:goran@rmalkon.co.rs">goran@rmalkon.co.rs</a>
-                                        <!-- Subarea end -->
-
+                                        ?>
+                                        </nav>
                                     </div>
-                                </div> <!-- Box contact end -->
+                                </div> <!-- Box menu end -->
+
+                                <?php endif; ?>
 
                             </div>
                         </div> <!-- Footer link holder end -->

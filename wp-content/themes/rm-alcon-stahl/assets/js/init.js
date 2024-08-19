@@ -8,7 +8,6 @@ window.addEventListener("load", () => {
     floatingHeader();
     initDropdown(".header__links-list");
     equalizeElementHeight(".elements-list.pumps .description",547);
-
 });
 
 
