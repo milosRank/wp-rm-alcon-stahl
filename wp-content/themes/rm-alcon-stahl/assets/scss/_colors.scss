@@ -1,0 +1,56 @@
+// ==== Colors ====
+
+$navy-blue: #070D1D;
+$navy-light-blue: #0A1839;
+$blue: #006DA3;
+$white: #FCFBFB;
+$black: #282828;
+$pure-black: #000000;
+$gray: #3E3E3E;
+$light-gray: #969696;
+
+
+
+// ==== Brand colors ====
+
+$primary-color: $navy-blue;
+$secondary-color: $black;
+$tertiary-color: $gray;
+$fourth-color: $blue;
+$fifth-color: $light-gray;
+$sixth-color: $navy-light-blue;
+
+
+// ==== Text colors ====
+
+.text-color-navy-blue {
+    color: $primary-color;
+}
+
+.text-color-navy-light-blue {
+    color: $sixth-color;
+}
+
+.text-color-blue {
+    color: $fourth-color;
+}
+
+.text-color-white {
+	color: $white;
+}
+
+.text-color-black {
+	color: $secondary-color;
+}
+
+.text-color-pure-black {
+	color: $pure-black;
+}
+
+.text-color-gray {
+	color: $tertiary-color;
+}
+
+.text-color-light-gray {
+	color: $fifth-color;
+}

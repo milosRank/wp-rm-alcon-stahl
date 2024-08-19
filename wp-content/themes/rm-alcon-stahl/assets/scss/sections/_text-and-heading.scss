@@ -1,0 +1,207 @@
+/*
+    ==== TEXT AND HEADING ====
+
+    Description: 
+        Text and heading seciton.
+    
+    Modificators:
+        
+    1. Content on the right
+
+        Description:             Align content to the right side
+        Hook element selector:   .text-and-heading
+        Class to add:            content-right
+*/
+
+.text-and-heading {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    scroll-margin-top: 200px;
+
+    .container {
+        position: relative;
+    }
+
+    .text-and-heading__inner {
+        max-width: 920px;
+    }
+
+    .title {
+        margin-bottom: 50px;
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: $secondary-color;
+            margin-bottom: 0;
+            @include font($font-primary-bold, normal, $medium-large, $medium-large);
+        }
+    }
+
+    .text {
+
+        p {
+            color: $tertiary-color;
+        }
+    }
+
+    img.decoration {
+        right: 0;
+    }
+
+    // ==== Modificator 1. ====
+    &.content-right {
+
+        .text-and-heading__inner {
+            margin-right: 0;
+            margin-left: auto;
+        }
+
+        img.decoration {
+            left: 0;
+            right: unset;
+        }
+    }
+
+    .container-extra-narrow {
+        
+        img.decoration {
+            top: -50px;
+            right: -150px;
+        }
+    }
+
+    .decoration.centrifugalne-fluid {
+        width: 272px;
+        height: 478px;
+        right: 0 !important;
+        top: -140px !important;
+    }
+
+    .decoration.zavojne-pumpe {
+        top: -75px;
+        right: unset;
+        left: 260px;
+    }
+
+    .decoration.prerada-voda-i-hemikalija {
+        top: 0 !important;
+    }
+
+    .decoration.dozirne-pumpe {
+        right: 100px;
+        top: -100px;
+    }
+
+    .decoration.prehrambena-industrija-pumpe {
+        right: 150px;
+        top: -30px;
+    }
+
+    .decoration.razne-industrije-pumpe {
+        top: -50px;
+        right: 150px;
+    }
+
+    .decoration.zavojne-vertikalne-pumpe {
+        right: 350px;
+        top: -100px;
+    }
+
+    .decoration.macenatori {
+        right: 400px;
+        top: -50px;
+    }
+}
+
+
+
+
+// RESPONSIVE
+
+@media(max-width: 1400px) {
+
+    .text-and-heading {
+
+        .container-extra-narrow {
+        
+            img.decoration {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .decoration.zavojne-pumpe {
+            width: 100%;
+        }
+
+        .decoration.zavojne-vertikalne-pumpe {
+            right: 0;
+            width: auto;
+        }
+
+        .decoration.macenatori {
+            right: 0;
+            width: auto;
+        }
+    }
+}
+
+@media(max-width: 991px) {
+    
+    .text-and-heading {
+
+        .decoration.zavojne-pumpe {
+            left: 0;
+        }
+
+        .decoration.dozirne-pumpe {
+            top: 0;
+            right: 0;
+        }
+
+        .decoration.prehrambena-industrija-pumpe {
+            top: 0;
+            right: 0;
+        }
+
+        .decoration.razne-industrije-pumpe {
+            top: 0;
+            right: 0;
+        }
+    }
+} 
+
+@media(max-width: 767px) {
+
+    .text-and-heading {
+        
+        .title {
+    
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-size: 3rem;
+                line-height: 3rem;
+            }
+        }
+
+        .container-extra-narrow {
+        
+            img.decoration {
+                top: 0;
+                right: 0;
+            }
+        }
+
+        &.margin-bottom-200 {
+            margin-bottom: 100px !important;
+        }
+    }
+}

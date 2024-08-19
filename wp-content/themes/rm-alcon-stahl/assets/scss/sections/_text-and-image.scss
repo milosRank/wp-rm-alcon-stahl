@@ -1,0 +1,223 @@
+/*
+    ==== TEXT AND IMAGE ====
+
+    Description: 
+        Text and image section.
+    
+    Modificators:
+
+    1. Text and image reverse
+    
+        Description:             Revert position of image and text (image to left, text to right)
+        Hook element selector:   .text-and-image
+        Class to add:            text-and-image--reversed
+
+    1. Wider text
+    
+        Description:             Increased area of text and decreased area of text
+        Hook element selector:   .text-and-image
+        Class to add:            text-wider
+*/
+
+.text-and-image {
+    margin-top: 250px;
+    margin-bottom: 250px;
+    scroll-margin-top: 200px;
+
+    .text-and-image__inner {
+        display: flex;
+        align-items: center;
+
+        .text,
+        .image {
+            width: 50%;
+        }
+
+        .image img {
+            height: auto;
+        }
+    }
+
+    .text-and-image__inner .image {
+        padding-left: 170px;
+
+        .image__inner.border {
+            display: inline-block;
+            padding: 40px 20px;
+            border: 1px solid #A7BFC7;
+        }
+    }
+
+    .text-and-image__inner .text {
+
+        .part-content:not(:last-child) {
+            margin-bottom: 100px;
+        }
+
+        .title {
+            margin-bottom: 50px;
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-size: $medium-large;
+                margin-bottom: 0;
+            }
+        }
+
+        p {
+            line-height: 3rem;
+        }
+    }
+}
+
+// ==== Modificator 1. ====
+.text-and-image.text-and-image--reversed {
+
+    .text-and-image__inner {
+        flex-direction: row-reverse;
+    }
+
+    .text-and-image__inner .image {
+        padding-left: 0;
+        padding-right: 170px;
+    }
+}
+
+// ==== Modificator 2. ====
+.text-and-image.text-wider {
+
+    .image {
+        padding-right: 0;
+        padding-left: 0;
+        margin-left: 32px;
+        margin-right: 0;
+    }
+
+    .image {
+       width: 30%;
+    }
+
+    .text {
+        width: 70%;
+    }
+
+    // When text is wider and position of image is reversed
+    &.text-and-image--reversed {
+
+        .image {
+            padding-right: 0;
+            padding-left: 0;
+            margin-left: 0;
+            margin-right: 32px;
+        }
+    }
+}
+
+
+
+// RESPONSIVE
+
+@media(max-width: 991px) {
+
+    .text-and-image {
+        margin-top: 100px;
+        margin-bottom: 100px;
+
+        .text-and-image__inner {
+            flex-direction: column;
+        }
+
+        .text-and-image__inner .text {
+            width: 100%;
+        }
+
+        .text-and-image__inner .text .part-content:not(:last-child) {
+            margin-bottom: 50px;
+        }
+
+        .text-and-image__inner .image {
+            width: 100%;
+            padding-left: 0;
+            margin-top: 50px;
+        }
+
+        // ==== Modificator 1. ====
+        &.text-and-image--reversed {
+
+            .text-and-image__inner  {
+                flex-direction: column;
+            }
+
+            .text-and-image__inner .text {
+                width: 100%;
+            }
+
+            .text-and-image__inner .image {
+                width: 100%;
+                padding-right: 0;
+            }
+        }
+
+        // ==== Modificator 2. ====
+        
+        &.text-wider {
+
+            .image {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            &.text-and-image--reversed {
+
+                .image {
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 576px) {
+
+    .text-and-image {
+
+        .text-and-image__inner .text {
+    
+            .title {
+    
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    font-size: 3rem;
+                    line-height: 3rem;
+                }
+            }
+    
+            p {
+                font-size: 1.4rem;
+                line-height: 20px;
+            }
+
+            ul.pdf-list {
+                font-size: 1.4rem;
+                line-height: 18px;
+            }
+        }
+    }
+}
+
+@media(max-width: 576px) {
+
+    .text-and-image {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+}

@@ -1,0 +1,498 @@
+/*
+    ==== TABLE AND IMAGE ====
+
+    Description: 
+        These are text and image boxes of website.
+    
+    Modificators:
+        
+    1. Table on the right
+
+        Description:             Move table to the right side
+        Hook element selector:   .table-and-image
+        Class to add:            table-on-right
+
+    2. Parallel table data
+
+        Description:             Table th and td are parallel
+        Hook element selector:   .table
+        Class to add:            table--parallel
+
+    3. Equal data cells
+
+        Description:             Equalizes data cells
+        Hook element selector:   .table
+        Class to add:            equal-cells
+
+    4. Multiple tables
+
+        Description:             Equalizes data cells
+        Hook element selector:   .table
+        Class to add:            multiple-tables
+*/
+
+.table-and-image {
+    margin-top: 150px;
+    margin-bottom: 150px;
+
+    .table-and-image__inner {
+        display: flex;
+        align-items: center;
+    }
+    
+    .table-container {
+        width: 904px;
+        margin-right: 168px;
+
+        .table + .table {
+            margin-top: 150px;
+        }
+
+        .table .table-title {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-gap: 10px;
+            align-items: flex-end;
+            margin-bottom: 40px;
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                position: relative;
+                display: inline-block;
+                @include font($font-primary-italic,700,$small,2.2rem);
+                color: $tertiary-color;
+                margin-bottom: 0;
+            }
+
+            .line-decoration {
+                display: block;
+                background-color: #A7BFC7;
+                height: 1px;
+            }
+        }
+    }
+
+    .image-container {
+        margin-top: 62px;
+        
+        img {
+            height: auto;
+        }
+    }
+
+    .table-and-image-title {
+        margin-bottom: 20px;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            @include font($font-primary-medium,500,$small,2.3rem);
+            color: #104867;
+            margin-bottom: 0;
+        }
+
+        .subtitle {
+            @include font($font-primary-italic,400,$small,2.3rem);
+            color: $secondary-color;
+            margin-top: 10px;
+        }
+    }
+
+    // ==== Modificator 1. ====
+    &.table-on-right {
+        
+        .table-and-image__inner {
+            flex-direction: row-reverse;
+        }
+
+        .table-container {
+            margin-right: 0;
+            margin-left: 168px;
+        }
+
+        .container-extra-narrow,
+        .container-medium-narrow {
+
+            .table-container {
+                margin-left: 32px;
+            }
+        }
+
+        .container-medium-narrow {
+
+            .table-container {
+                width: calc(100% - 272px);
+            }
+        }
+
+    }
+
+    // ==== Modificator 2. ====
+    &.table--parallel {
+
+        .table-and-image__inner {
+            align-items: stretch;
+        }
+
+        .table {
+            height: 100%;
+
+            // ==== Modificator 3. ====
+            &.equal-cells {
+
+                th,
+                td {
+                    width: 50%;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                }
+            }
+
+            table {
+                border-collapse: separate;
+                border-spacing: 0;
+                height: 100%;
+            }
+
+            th {
+                width: 30%;
+            }
+
+            /*
+            * Set table border style 
+            */
+            th,
+            td {
+                border-color: $fifth-color;
+                border-bottom: 0;
+                border-top: 1px solid $fifth-color;
+                padding: 15.5px 20px;
+            }
+
+            table tr:last-child {
+
+                th,
+                td {
+                    border-bottom: 1px solid $fifth-color;
+                }
+            }
+
+            table tr:first-child > *:first-child {
+                border-top-left-radius: 8px;
+            }
+
+            table tr:first-child > *:last-child {
+                border-top-right-radius: 8px;
+            }
+
+            table tr:last-child > *:first-child {
+                border-bottom-left-radius: 8px;
+            }
+
+            table tr:last-child > *:last-child {
+                border-bottom-right-radius: 8px;
+            }
+        }
+
+        .image-container {
+            margin-top: 0;
+        }
+    }
+
+    // ==== Modificator 4. ====
+    &.multiple-tables {
+
+        .table {
+            display: flex;
+
+            table {
+
+                th {
+                    width: 80px;
+                    text-align: center;
+                    border-bottom: 1px solid #969696;
+                    border-bottom-left-radius: 8px;
+                }
+
+                th + td {
+                    width: 80px;
+                    text-align: center;
+                    border-radius: 0;
+                    border-left: 1px solid #969696;
+                }
+
+                tr > td:first-child {
+                    text-align: center;
+                    border-radius: 0;
+                }
+            }
+            table tr:last-child > :first-child {
+                border-bottom-left-radius: 0 !important;
+            }
+        }
+    }
+
+    .container-extra-narrow,
+    .container-extra-narrow {
+
+        .table-container {
+            width: 376px;
+            margin-right: 32px;
+        }
+    }
+}
+
+
+
+
+// RESPONSIVE
+
+@media(max-width: 1399px) {
+
+    .table-and-image {
+
+        .table-container {
+            width: 100%;
+            margin-right: 100px;
+        }
+
+        &.table-on-right {
+    
+            .table-container {
+                margin-left: 100px;
+            }
+        }
+
+        &.table--parallel.table-on-right {
+
+            .table-container {
+                margin-left: 32px;
+            }
+        }
+
+        &.table--parallel {
+
+            .table-container {
+                margin-right: 32px;
+            }
+        }
+    }
+}
+
+@media(min-width: 992px) {
+
+    .table-and-image {
+        
+        // ==== Modificator 4. ====
+        &.multiple-tables {
+
+            .table {
+                display: flex;
+
+                table:first-child {
+                    
+                    td {
+                        border-top-right-radius: 0 !important;
+                        border-bottom-right-radius: 0 !important;
+                    }
+
+                    th {
+                        border-right: 0;
+                    }
+                }
+
+                table:last-child {
+                    
+                    th {
+                        border-top-left-radius: 0 !important;
+                        border-bottom-left-radius: 0 !important;
+                        border-left: 0;
+                        border-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 991px) {
+
+    .table-and-image {
+        margin-top: 100px;
+        margin-bottom: 100px;
+
+        &.margin-bottom-300 {
+            margin-bottom: 100px !important;
+        }
+        
+        .table-and-image__inner {
+            flex-direction: column;
+        }
+
+        .table-container {
+            margin-right: 0;
+        }
+
+        &.table-on-right {
+        
+            .table-and-image__inner {
+                flex-direction: column;
+            }
+    
+            .table-container {
+                margin-left: 0;
+            }
+        }
+
+        .image-container {
+            width: 100%;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .table-container .table + .table {
+            margin-top: 75px;
+        }
+
+        &.table--parallel {
+            
+            .table-and-image__inner {
+                flex-direction: row;
+            }
+
+            &.table-on-right {
+
+                .table-and-image__inner {
+                    flex-direction: row-reverse;
+                }
+            }
+
+            .image-container {
+                max-width: 30%;
+            }
+        }
+
+        &.multiple-tables {
+
+            .table-and-image__inner {
+                align-items: center;
+            }
+
+            .table {
+                flex-direction: column;
+            }
+
+            .table {
+
+                table + table {
+                    margin-top: 50px;
+                }
+
+                table th {
+                    border-right: 0;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 767px) {
+
+    .table-and-image {
+
+        &.margin-top-220 {
+            margin-top: 0 !important;
+        }
+
+        &.multiple-tables {
+
+            .table-and-image__inner {
+                flex-direction: column-reverse !important;
+                align-items: flex-start;
+            }
+
+            .image-container {
+                margin-bottom: 30px;
+                max-width: 240px;
+            }
+
+            .table-container {
+                margin-left: 0 !important;
+                margin-right: 0;
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+@media(max-width: 576px) {
+
+    .table-and-image {
+
+        &.table--parallel {
+
+            .table-and-image__inner {
+                flex-direction: column-reverse;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .table-container {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            &.table-on-right {
+
+                .table-and-image__inner {
+                    flex-direction: column-reverse;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+             
+                .table-container {
+                    width: 100%;
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+            }
+
+            .image-container {
+                margin-bottom: 30px;
+                max-width: 240px;
+            }
+
+            .table.equal-cells {
+    
+                th,
+                td {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+@media(max-width: 400px) {
+
+    .table-and-image {
+
+        th,
+        td {
+            font-size: $extra-small;
+            padding: 10px 15px;
+        }
+    }
+}

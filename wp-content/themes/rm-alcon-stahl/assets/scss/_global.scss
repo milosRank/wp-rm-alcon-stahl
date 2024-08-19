@@ -1,0 +1,512 @@
+@import "./mixins/mixins";
+@import "variables";
+
+
+
+// ==== Globals ====
+
+:root {
+	font-size: 62.5%; // We are changing the value of rem to 1rem = 10px instead of default 1rem = 16px because of the easier calculations
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 122px;
+    font-family: $font-primary-regular;
+    font-size: $small;
+    color: $secondary-color;
+}
+
+
+
+// ==== Inline elements ====
+
+h1 {
+    @include font($font-secondary-bold, normal, $extra-large, $extra-large);
+    color: $tertiary-color;
+    margin-bottom: 5.5rem;
+    margin-top: 0;
+}
+
+h2 {
+    @include font($font-primary-bold, normal, $medium-large, 5rem);
+    color: $tertiary-color;
+    margin-bottom: 5rem;
+    margin-top: 0;
+}
+
+h3 {
+    @include font($font-primary-bold, normal, $large, $large);
+    color: $tertiary-color;
+    margin-bottom: 3.5rem;
+    margin-top: 0;
+}
+
+h4 {
+    @include font($font-primary-bold, normal, initial, initial);
+    color: $tertiary-color;
+    margin-bottom: 3rem;
+    margin-top: 0;
+}
+
+h5 {
+    @include font($font-primary-bold, normal, initial, initial);
+    color: $tertiary-color;
+    margin-bottom: 2.5rem;
+    margin-top: 0;
+}
+
+h6 {
+    @include font($font-primary-bold, normal, initial, initial);
+    color: $tertiary-color;
+    margin-bottom: 2rem;
+    margin-top: 0;
+}
+
+a {
+    color: $fourth-color;
+    text-decoration: none;
+
+	&:hover {
+        text-decoration: underline;
+	}
+
+    &.download-link {
+        display: inline-block;
+        position: relative;
+        padding-left: 26px;
+        color: $secondary-color;
+        text-decoration: none;
+
+        &::before {
+            @include pseudo("",16px,16px,absolute);
+            background-image: url("../img/icons/button/icon--download.svg");
+            background-position: center;
+            background-size: cover;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &.underlined {
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+p {
+    font-size: $small;
+    margin-bottom: 30px;
+    margin-top: 0;
+    line-height: 3rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+strong {
+    @include font($font-primary-semi-bold, normal, $small, $small);
+}
+
+
+
+// ==== Image ====
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+img.decoration {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+}
+
+.image-box.shadow {
+    filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.25));
+}
+
+
+
+// ==== Lists ====
+
+ul {
+    margin-top: 0;
+    padding-left: 25px;
+}
+
+ul.pdf-list {
+    padding-left: 0;
+    margin-bottom: 0;
+    
+    li {
+        display: block;
+        margin-bottom: 25px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    li a {
+        @extend .download-link;
+    }
+}
+
+ol {
+    margin-top: 0;
+    padding-left: 25px;
+}
+
+section.normal {
+    margin-top: 250px;
+    margin-bottom: 300px;
+}
+
+
+
+
+// ==== Table ====
+
+table {
+    color: $tertiary-color;
+    $th-background-color: #E7E7E7;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    tr th,
+    tr td {
+        color: inherit;
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+        text-align: left;
+        padding: 11.5px 15px;
+        border-right: 1px solid #969696;
+        border-bottom: 1px solid #969696;
+
+        &:first-child {
+            border-left: 1px solid #969696;
+        }
+    }
+
+    tr th {
+        @include font($font-primary-medium,500,$small,2.2rem);
+        background-color: $th-background-color;
+        border-top: solid 1px #969696;
+    }
+
+    td {
+        @include font($font-primary-regular,400,$small,2.2rem);
+        background-color: #ffffff;
+    }
+
+    /* top-left border-radius */
+    thead th:first-child {
+        border-top-left-radius: 8px;
+    }
+
+    /* top-right border-radius */
+    thead th:last-child {
+        border-top-right-radius: 8px;
+    }
+
+    /* bottom-left border-radius */
+    tr:last-child td:first-child {
+        border-bottom-left-radius: 8px;
+    }
+
+    /* bottom-right border-radius */
+    tr:last-child td:last-child {
+        border-bottom-right-radius: 8px;
+    }
+}
+
+
+
+// ==== Text aligment ====
+
+.text-center {
+	text-align: center !important;
+}
+
+.text-left {
+	text-align: left !important;
+}
+
+.text-right {
+	text-align: right !important;
+}
+
+
+
+// ==== Positioning ====
+
+.relative {
+	position: relative;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.top-minus-100 {
+    top: -100px !important;
+}
+
+
+// ==== Transforms ====
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+
+
+// ==== Width and height ====
+
+.width-auto {
+    width: auto !important;
+}
+
+.height-auto {
+    height: auto !important;
+}
+
+
+
+// ==== Display ====
+
+.display-block {
+	display: block;
+}
+
+.display-inline-block {
+	display: inline-block;
+}
+
+.display-inline {
+	display: inline;
+}
+
+.display-flex {
+	display: flex;
+}
+
+.display-grid {
+	display: grid;
+}
+
+.display-none {
+	display: none;
+}
+
+
+// ==== Various ====
+.text-underlined {
+    text-decoration: underline;
+}
+
+
+// ==== Bootstrap overriden classes ====
+
+@media(min-width: 1700px) {
+
+    .container {
+        max-width: 1600px;
+    }
+
+    // Narrow container
+    .container-narrow .container,
+    .container-narrow.container {
+        max-width: 1326px;
+    }
+}
+
+// Narrow container
+.container-extra-narrow .container,
+.container-extra-narrow.container {
+    max-width: 648px;
+}
+
+.container-medium-narrow {
+    max-width: 1030px;
+}
+
+
+
+
+// RESPONSIVE
+
+@media(max-width: 1400px) {
+    
+    img.decoration {
+        width: 50%;
+        height: auto;
+    }
+}
+
+@media(min-width: 992px) {
+
+    table {
+
+        &.text-center {
+        
+            th,
+            td {
+                text-align: center;
+            }
+        }
+    }
+}
+
+@media(max-width: 991px) {
+
+    section:not(.table--parallel) {
+
+        table thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+
+        table tr td {
+            width: 100%;
+            display: block;
+            border: none !important;
+            padding-top: 0;
+        }
+        
+        table tr td::before {
+            /*
+            * aria-label has no advantage, it won't be read inside a table
+            * content: attr(aria-label);
+            */
+            content: attr(data-label);
+            display: block;
+            width: calc(100% + 30px);
+            padding: 15px;
+            margin-left: -15px;
+            margin-bottom: 15px;
+            background-color: #E7E7E7;
+            text-align: left;
+        }
+
+        table tbody tr td:last-child {
+            border-bottom: 5px solid $fourth-color !important;
+        }
+
+        table tbody tr:last-child td:last-child {
+            border-bottom: none !important;
+        }
+
+        table td.text-center,
+        table th.text-center {
+            text-align: left;
+        }
+
+        table {
+
+            .th-icon::before {
+                background-repeat: no-repeat;
+                background-position: 15px 50%;
+                padding: 26px;
+            }
+
+            .th-icon.l-profile::before {
+                background-image: url("../img/icons/profile/L-profile.svg");
+            }
+
+            .th-icon.t-profile::before {
+                background-image: url("../img/icons/profile/T-profile.svg");
+            }
+
+            .th-icon.u-profile::before {
+                background-image: url("../img/icons/profile/U-profile.svg");
+            }
+
+            .th-icon.i-profile::before {
+                background-image: url("../img/icons/profile/I-profile.svg");
+            }
+
+            .th-icon.i-profile::before {
+                background-image: url("../img/icons/profile/I-profile.svg");
+            }
+
+            .th-icon-text::before {
+                background-repeat: no-repeat;
+                background-position-y: 53%;
+            }
+
+            .th-icon-text.square::before {
+                background-position-x: 115px;
+                background-image: url("../img/icons/shape/icon--square.svg");
+            }
+
+            .th-icon-text.circle::before {
+                background-position-x: 95px;
+                background-image: url("../img/icons/shape/icon--circle.svg");
+            }
+
+            .th-icon-text.hexagon::before {
+                background-position-x: 140px;
+                background-image: url("../img/icons/shape/icon--hexagon.svg");
+            }
+
+            .th-icon-text.flah::before {
+                background-position-x: 65px;
+                background-image: url("../img/icons/shape/icon--rectangle.svg");
+            }
+        }
+    }
+
+
+    section.normal {
+        margin-top: 100px !important;
+        margin-bottom: 100px !important;
+    }
+}
+
+@media(max-width:576px) {
+
+    body {
+        padding-top: 88px;
+    }
+
+    .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .container {
+        padding-right: 34px;
+        padding-left: 34px;
+    }
+}

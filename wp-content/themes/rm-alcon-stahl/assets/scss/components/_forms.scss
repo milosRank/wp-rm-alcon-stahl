@@ -1,0 +1,72 @@
+/*
+    ==== FORMS ====
+
+    Component description:
+        Form elements
+    
+    Modificators:
+        No modificators.
+*/
+
+input {
+    max-width: 100%;
+    padding: 20px;
+    border: 1px solid $white;
+    border-radius: 5px;
+    color: $white;
+    background-color: transparent;
+    @include font($font-primary-regular,400,16px,24px);
+    backdrop-filter: blur(25px);
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: $white;
+        opacity: 1; /* Firefox */
+        @include font($font-primary-regular,400,16px,24px);
+    }
+      
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: $white;
+        @include font($font-primary-regular,400,16px,22px);
+    }
+      
+    &::-ms-input-placeholder { /* Microsoft Edge */
+        color: $white;
+        @include font($font-primary-regular,400,16px,24px);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+textarea {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid $white;
+    border-radius: 5px;
+    color: $white;
+    background-color: transparent;
+    @include font($font-primary-regular,400,16px,24px);
+    backdrop-filter: blur(25px);
+    resize: none;
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: $white;
+        opacity: 1; /* Firefox */
+        @include font($font-primary-regular,400,16px,24px);
+    }
+      
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: $white;
+        @include font($font-primary-regular,400,16px,22px);
+    }
+      
+    &::-ms-input-placeholder { /* Microsoft Edge */
+        color: $white;
+        @include font($font-primary-regular,400,16px,24px);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
