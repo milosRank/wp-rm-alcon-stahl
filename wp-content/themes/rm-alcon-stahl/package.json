@@ -11,11 +11,15 @@
         "build-components": "sass assets/scss/components/_allcomponents.scss --style=expanded --quiet | postcss --use autoprefixer --no-map > assets/css/components.css",
         "build-chunks": "npm-run-all build-global build-partials build-sections build-page-specifics build-components",
         "build-all": "sass assets/scss/main.scss --style=expanded --quiet | postcss --use autoprefixer --no-map > assets/css/main.css",
-        "build-bootstrap": "sass assets/scss/bootstrap.scss --style=expanded --quiet | postcss --use autoprefixer --no-map > assets/css/bootstrap.css"
+        "build-bootstrap": "sass assets/scss/bootstrap.scss --style=expanded --quiet | postcss --use autoprefixer --no-map > assets/css/bootstrap.css",
+        "build-gutenberg-blocks": "wp-scripts build",
+        "start-gutenberg-blocks": "wp-scripts start",
+        "watch-text-and-image": "wp-scripts start /gutenberg/blocks/text-and-image/text_and_image.js --output-path=gutenberg/blocks/assets/js"
     },
     "author": "Milos Rankovic",
     "license": "ISC",
     "devDependencies": {
+        "@wordpress/scripts": "^28.6.0",
         "autoprefixer": "^10.4.13",
         "postcss": "^8.4.21",
         "postcss-cli": "^10.1.0"

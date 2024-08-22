@@ -38,6 +38,46 @@ function register_menus() {
 
 }
 
+
+/**
+ * Setup the theme
+ */
+function setup_theme() {
+
+    add_theme_support( 'wp-block-styles' ); // Support for block styles Podrška za stilove blokova
+    add_theme_support( 'align-wide' ); // Support for block wides Podrška za široke i pune širine blokova
+    add_theme_support( 'editor-styles' ); // Support for editor styles Podrška za editor stilove
+    // add_editor_style( 'editor-styles-custom.css' ); // Customize editor style Prilagođeni stil za Gutenberg editor
+
+}
+
+
+/**
+ * Register all custom gutenberg blocks in theme
+ */
+function register_theme_blocks() {
+
+    wp_register_script(
+        'rm-alcon-stahl-text-and-image',
+        get_template_directory_uri() . '/gutenberg/blocks/assets/js/text_and_image.js',
+        array('wp-i18n', 'wp-element', 'wp-blocks', 'wp-block-editor', 'wp-components', 'wp-api', 'wp-data')
+    );
+
+    wp_enqueue_script('rm-alcon-stahl-text-and-image');
+
+    register_block_type( 'rm-alcon-stahl/text-and-image', array(
+        'editor_script' => 'rm-alcon-stahl',
+    ));
+
+}
+
+
+/**
+ * Hook function to 'init' action to register custom Gutenberg blocks.
+ */
+add_action('init', 'register_theme_blocks');
+
+
 /**
  * Hooks to enqueue styles and scripts in the theme.
  *
@@ -56,3 +96,4 @@ add_action('wp_enqueue_scripts', 'enqueue_scripts');
  * menus and possibly other theme setup tasks.
  */
 add_action('after_setup_theme', 'register_menus');
+add_action('after_setup_theme', 'setup_theme');
