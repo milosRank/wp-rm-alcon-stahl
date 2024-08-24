@@ -115,7 +115,7 @@ function register_theme_blocks() {
         $domain = $block['domain'];
         $name = $block['name'];
         $dependency = $block['dependency'];
-        $directory = get_template_directory_uri() . '/gutenberg/blocks/assets/js/' . replace_dash_with_underscore($name);
+        $directory = get_template_directory_uri() . '/gutenberg/blocks/assets/js/' . replace_dash_with_underscore($name) . '.js';
 
         // Register gutenberg block script
         wp_register_script(
