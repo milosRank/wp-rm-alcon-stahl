@@ -6,14 +6,14 @@
 // ==== Globals ====
 
 :root {
-	font-size: 62.5%; // We are changing the value of rem to 1rem = 10px instead of default 1rem = 16px because of the easier calculations
+    font-size: 62.5%; // We are changing the value of rem to 1rem = 10px instead of default 1rem = 16px because of the easier calculations
 }
 
 *,
 *::after,
 *::before {
-	box-sizing: border-box;
-	-webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -79,9 +79,9 @@ a {
     color: $fourth-color;
     text-decoration: none;
 
-	&:hover {
+    &:hover {
         text-decoration: underline;
-	}
+    }
 
     &.download-link {
         display: inline-block;
@@ -91,7 +91,7 @@ a {
         text-decoration: none;
 
         &::before {
-            @include pseudo("",16px,16px,absolute);
+            @include pseudo("", 16px, 16px, absolute);
             background-image: url("../img/icons/button/icon--download.svg");
             background-position: center;
             background-size: cover;
@@ -160,7 +160,7 @@ ul {
 ul.pdf-list {
     padding-left: 0;
     margin-bottom: 0;
-    
+
     li {
         display: block;
         margin-bottom: 25px;
@@ -213,13 +213,13 @@ table {
     }
 
     tr th {
-        @include font($font-primary-medium,500,$small,2.2rem);
+        @include font($font-primary-medium, 500, $small, 2.2rem);
         background-color: $th-background-color;
         border-top: solid 1px #969696;
     }
 
     td {
-        @include font($font-primary-regular,400,$small,2.2rem);
+        @include font($font-primary-regular, 400, $small, 2.2rem);
         background-color: #ffffff;
     }
 
@@ -249,15 +249,15 @@ table {
 // ==== Text aligment ====
 
 .text-center {
-	text-align: center !important;
+    text-align: center !important;
 }
 
 .text-left {
-	text-align: left !important;
+    text-align: left !important;
 }
 
 .text-right {
-	text-align: right !important;
+    text-align: right !important;
 }
 
 
@@ -265,11 +265,11 @@ table {
 // ==== Positioning ====
 
 .relative {
-	position: relative;
+    position: relative;
 }
 
 .absolute {
-	position: absolute;
+    position: absolute;
 }
 
 .top-minus-100 {
@@ -300,27 +300,27 @@ table {
 // ==== Display ====
 
 .display-block {
-	display: block;
+    display: block;
 }
 
 .display-inline-block {
-	display: inline-block;
+    display: inline-block;
 }
 
 .display-inline {
-	display: inline;
+    display: inline;
 }
 
 .display-flex {
-	display: flex;
+    display: flex;
 }
 
 .display-grid {
-	display: grid;
+    display: grid;
 }
 
 .display-none {
-	display: none;
+    display: none;
 }
 
 
@@ -356,12 +356,17 @@ table {
 }
 
 
+// ==== Various ====
+
+.cta-wrapper {
+    margin-top: 100px;
+}
 
 
 // RESPONSIVE
 
 @media(max-width: 1400px) {
-    
+
     img.decoration {
         width: 50%;
         height: auto;
@@ -373,7 +378,7 @@ table {
     table {
 
         &.text-center {
-        
+
             th,
             td {
                 text-align: center;
@@ -403,7 +408,7 @@ table {
             border: none !important;
             padding-top: 0;
         }
-        
+
         table tr td::before {
             /*
             * aria-label has no advantage, it won't be read inside a table
