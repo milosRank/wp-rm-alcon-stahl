@@ -1,0 +1,97 @@
+/*
+    ==== TABLET SPACING ====
+
+    Description:
+        List of all aviailable spacings (padding and margin) accross the website - TABLET view.
+    
+    Modificators:
+        No modificators.
+*/
+
+
+@media(min-width: 576px) and (max-width: 991px) {
+
+    // ==== Padding ====
+
+    .padding-top-0--tablet {
+        padding-top: 0 !important;
+    }
+
+    .padding-bottom-0--tablet {
+        padding-bottom: 0 !important;
+    }
+
+    .padding-top-50--tablet {
+        padding-top: 50px !important;
+    }
+
+    .padding-bottom-50--tablet {
+        padding-bottom: 50px !important;
+    }
+
+    .padding-top-100--tablet {
+        padding-top: 100px !important;
+    }
+
+    .padding-bottom-100--tablet {
+        padding-bottom: 100px !important;
+    }
+
+    .padding-top-150--tablet {
+        padding-top: 150px !important;
+    }
+
+    .padding-bottom-150--tablet {
+        padding-bottom: 150px !important;
+    }
+
+    .padding-top-200--tablet {
+        padding-top: 200px !important;
+    }
+
+    .padding-bottom-200--tablet {
+        padding-bottom: 200px !important;
+    }
+
+    // ==== Margin ====
+
+    .margin-top-0--tablet {
+        margin-top: 0 !important;
+    }
+
+    .margin-bottom-0--tablet {
+        margin-bottom: 0 !important;
+    }
+
+    .margin-top-50--tablet {
+        margin-top: 50px !important;
+    }
+
+    .margin-bottom-50--tablet {
+        margin-bottom: 50px !important;
+    }
+
+    .margin-top-100--tablet {
+        margin-top: 100px !important;
+    }
+
+    .margin-bottom-100--tablet {
+        margin-bottom: 100px !important;
+    }
+
+    .margin-top-150--tablet {
+        margin-top: 150px !important;
+    }
+
+    .margin-bottom-150--tablet {
+        margin-bottom: 150px !important;
+    }
+
+    .margin-top-200--tablet {
+        margin-top: 200px !important;
+    }
+
+    .margin-bottom-200--tablet {
+        margin-bottom: 200px !important;
+    }
+}
