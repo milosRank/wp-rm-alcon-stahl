@@ -60,6 +60,25 @@ return [
             'category'      => $main
         ],
 
+        // Text
+        'text' => [
+            'name'          => 'text',
+            'domain'        => $domain,
+            'dependency'    => [
+                'wp-i18n',
+                'wp-element',
+                'wp-blocks',
+                'wp-block-editor',
+                'wp-components',
+                'wp-api',
+                'wp-data',
+            ],
+            'title'         => __('Text', $domain),
+            'description'   => __('Generate Text section.', $domain),
+            'icon'          => 'text',
+            'category'      => $main
+        ],
+
     ],
 
 ];

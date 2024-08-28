@@ -41,6 +41,13 @@
         }
     }
 
+    .title + .subtitle {
+        font-family: $font-primary-light-italic;
+        font-size: 2.4rem;
+        line-height: 3.2rem;
+        margin-bottom: 60px;
+    }
+
     .text {
 
         p {
