@@ -64,17 +64,9 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             type: 'string',
             default: 'wide',
         },
-        BlockImage: {
+        BlockBackgroundImage: {
             type: 'object',
             default: null,
-        },
-        BlockImageClass: {
-            type: 'string',
-            default: '',
-        },
-        BlockImagePosition: {
-            type: 'string',
-            default: '',
         },
         BlockCtaToggle: {
             type: 'boolean',
@@ -129,9 +121,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             BlockTitleTag,
             BlockTitle,
             BlockSubtitle,
-            BlockImage,
-            BlockImageClass,
-            BlockImagePosition,
+            BlockBackgroundImage,
             BlockCtaToggle,
             BlockCtaLabel,
             BlockCtaUrl,
@@ -215,31 +205,31 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
         /* Media */
 
         /**
-         * Save BlockImage attribute
+         * Save BlockBackgroundImage attribute
          * 
-         * @param {object} newBlockImage
+         * @param {object} newBlockBackgroundImage
          * 
          * @return {void} 
          */
-        const onSelectBlockImage = newBlockImage => {
+        const onSelectBlockBackgroundImage = newBlockBackgroundImage => {
 
-            setAttributes({ BlockImage: newBlockImage });
+            setAttributes({ BlockBackgroundImage: newBlockBackgroundImage });
 
         }
 
         /**
-         * Create BlockImage preview
+         * Create BlockBackgroundImage preview
          * 
-         * @param {object} BlockImage
+         * @param {object} BlockBackgroundImage
          * 
          * @return {mixed}
          */
-        const BlockImagePreview = (BlockImage) => {
+        const BlockBackgroundImagePreview = (BlockBackgroundImage) => {
 
-            if (BlockImage) {
+            if (BlockBackgroundImage) {
                 return (
                     <div className="custom-block-main-image-preview">
-                        <img src={BlockImage.url} />
+                        <img src={BlockBackgroundImage.url} />
                     </div>
                 )
             }
@@ -249,17 +239,17 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
         }
 
         /**
-         * Create button for deleting BlockImage attribute
+         * Create button for deleting BlockBackgroundImage attribute
          * 
-         * @param {object} BlockImage
+         * @param {object} BlockBackgroundImage
          * 
          * @return {mixed}
          */
-        const ButtonRemoveBlockImage = (BlockImage) => {
+        const ButtonRemoveBlockBackgroundImage = (BlockBackgroundImage) => {
 
-            if (BlockImage) {
+            if (BlockBackgroundImage) {
                 return (
-                    <IconButton onClick={onClickRemoveBlockImage} icon="dismiss"
+                    <IconButton onClick={onClickRemoveBlockBackgroundImage} icon="dismiss"
                         className="editor-media-placeholder__button is-button is-default is-large">
                         {__('Remove Block Image', domain)}
                     </IconButton>
@@ -274,22 +264,9 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
          * 
          * @return {void} 
          */
-        const onClickRemoveBlockImage = BlockImage => {
+        const onClickRemoveBlockBackgroundImage = () => {
 
-            setAttributes({ BlockImage: null });
-
-        }
-
-        /**
-         * Save BlockImagePosition attribute
-         * 
-         * @param {string} newBlockImagePosition
-         * 
-         * @return {void}
-         */
-        const onSelectBlockImagePosition = newBlockImagePosition => {
-
-            setAttributes({ BlockImagePosition: newBlockImagePosition });
+            setAttributes({ BlockBackgroundImage: null });
 
         }
 
@@ -424,9 +401,9 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 
                     <div className="tr-media-upload-box" style={{ marginBottom: '40px' }} >
                         <MediaUpload
-                            onSelect={onSelectBlockImage}
+                            onSelect={onSelectBlockBackgroundImage}
                             type="image"
-                            value={BlockImage}
+                            value={BlockBackgroundImage}
                             render={({ open }) => (
 
                                 <IconButton onClick={open} icon="upload"
@@ -438,24 +415,11 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
                             )}
                         />
 
-                        {BlockImagePreview(BlockImage, BlockImage)}
+                        {BlockBackgroundImagePreview(BlockBackgroundImage, BlockBackgroundImage)}
 
-                        {ButtonRemoveBlockImage(BlockImage)}
-
-                    </div>
-
-                    <div className="tr-settings-box">
-
-                        <SelectControl label={__('Image position', domain)} value={BlockImagePosition}
-                            options={[
-                                { label: __('Left', domain), value: 'text-and-image--reversed' },
-                                { label: __('Right', domain), value: '' }
-                            ]}
-                            onChange={onSelectBlockImagePosition}
-                        />
+                        {ButtonRemoveBlockBackgroundImage(BlockBackgroundImage)}
 
                     </div>
-
                 </PanelBody>
 
                 <PanelBody title={__('Navigation settings', domain)} initialOpen={false}>
@@ -611,9 +575,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             BlockTitleTag,
             BlockTitle,
             BlockSubtitle,
-            BlockImage,
-            BlockImageClass,
-            BlockImagePosition,
+            BlockBackgroundImage,
             BlockCtaToggle,
             BlockCtaLabel,
             BlockCtaUrl,
@@ -622,64 +584,25 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             BlockCtaCustomClass,
             BlockCtaClass,
             BlockCtaAligment,
-            BlockPreview,
             ...BlockSpacingAttributes
 
         } = attributes;
 
         return (
             <>
-                <section className={`text-and-image ${BlockImagePosition} ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)}`}>
+                <section className={`hero-section ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)}`}>
                     <div className="container-fluid">
                         <div className="wrapper">
                             <div className={`container ${BlockContainerWidth}`}>
+                                <div className="hero__inner">
 
-                                <div className="text-and-image__inner">
-
-                                    <div className="text">
-                                        <div className="text__inner">
-                                            <div className="part-content">
-
-                                                <div className="heading">
-                                                    {(BlockTitle != null && BlockTitle.length > 0) &&
-                                                        <div className="title">
-                                                            <RichText.Content
-                                                                tagName={BlockTitleTag}
-                                                                className="rich-block-title"
-                                                                format="string"
-                                                                value={BlockTitle}
-                                                            />
-
-                                                        </div>
-                                                    }
-
-                                                    {(BlockSubtitle != null && BlockSubtitle.length > 0) &&
-                                                        <div className="subtitle">
-                                                            <RichText.Content
-                                                                tagName="p"
-                                                                className="rich-block-subtitle"
-                                                                format="string"
-                                                                value={BlockSubtitle}
-                                                            />
-                                                        </div>
-                                                    }
-
-                                                </div>
-
-                                                <div className={`content`}>
-                                                    <InnerBlocks.Content />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {(BlockImage != null) &&
+                                    {(BlockBackgroundImage != null) &&
                                         <>
-                                            <div className="image" >
+                                            <div className="bg-image">
 
                                                 <div className={`image__inner`}>
 
-                                                    <img src={BlockImage.url} alt={BlockImage.alt} width={BlockImage.sizes.full.width} height={BlockImage.sizes.full.height} className={`${BlockImageClass}`} />
+                                                    <img src={BlockBackgroundImage.url} alt={BlockBackgroundImage.alt} width={BlockBackgroundImage.sizes.full.width} height={BlockBackgroundImage.sizes.full.height} />
 
                                                 </div>
 
@@ -687,27 +610,51 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
                                         </>
                                     }
 
-                                </div>
+                                    <div className="hero__title">
 
-                                {(BlockCtaToggle) &&
+                                        {(BlockTitle != null && BlockTitle.length > 0) &&
+                                            <RichText.Content
+                                                tagName={BlockTitleTag}
+                                                className="rich-block-title"
+                                                format="string"
+                                                value={BlockTitle}
+                                            />
+                                        }
 
-                                    <>
-                                        {((BlockCtaUrl != null && BlockCtaUrl.length > 0) && (BlockCtaLabel != null && BlockCtaLabel.length > 0)) &&
-                                            <div className={`cta-wrapper  ${BlockCtaAligment}`}>
-
-                                                <a href={BlockCtaUrl}
-                                                    target={BlockCtaTarget}
-                                                    rel="noopener noreferrer"
-                                                    className={`${BlockCtaClass} ${BlockCtaCustomClass}`}
-                                                >
-                                                    <span>{BlockCtaLabel}</span>
-                                                </a>
-
+                                        {(BlockSubtitle != null && BlockSubtitle.length > 0) &&
+                                            <div className="subtitle">
+                                                <RichText.Content
+                                                    tagName="span"
+                                                    className="rich-block-subtitle"
+                                                    format="string"
+                                                    value={BlockSubtitle}
+                                                />
                                             </div>
                                         }
-                                    </>
 
-                                }
+                                    </div>
+
+                                    {(BlockCtaToggle) &&
+
+                                        <>
+                                            {((BlockCtaUrl != null && BlockCtaUrl.length > 0) && (BlockCtaLabel != null && BlockCtaLabel.length > 0)) &&
+                                                <div className={`cta-wrapper  ${BlockCtaAligment}`}>
+
+                                                    <a href={BlockCtaUrl}
+                                                        target={BlockCtaTarget}
+                                                        rel="noopener noreferrer"
+                                                        className={`${BlockCtaClass} ${BlockCtaCustomClass}`}
+                                                    >
+                                                        <span>{BlockCtaLabel}</span>
+                                                    </a>
+
+                                                </div>
+                                            }
+                                        </>
+
+                                    }
+
+                                </div>
 
                             </div>
                         </div>

@@ -41,6 +41,25 @@ return [
             'category'      => $main
         ],
 
+        // Hero section
+        'hero-section' => [
+            'name'          => 'hero-section',
+            'domain'        => $domain,
+            'dependency'    => [
+                'wp-i18n',
+                'wp-element',
+                'wp-blocks',
+                'wp-block-editor',
+                'wp-components',
+                'wp-api',
+                'wp-data',
+            ],
+            'title'         => __('Hero section', $domain),
+            'description'   => __('Generate Hero section.', $domain),
+            'icon'          => 'cover-image',
+            'category'      => $main
+        ],
+
     ],
 
 ];

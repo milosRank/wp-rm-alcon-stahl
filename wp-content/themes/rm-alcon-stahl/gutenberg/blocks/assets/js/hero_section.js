@@ -660,9 +660,9 @@ module.exports = window["ReactJSXRuntime"];
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-/*!***********************************************************!*\
-  !*** ./gutenberg/blocks/text-and-image/text_and_image.js ***!
-  \***********************************************************/
+/*!*******************************************************!*\
+  !*** ./gutenberg/blocks/hero-section/hero_section.js ***!
+  \*******************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_spacings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/spacings */ "./gutenberg/components/spacings/index.js");
 /* harmony import */ var _components_spacings_options__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/spacings/options */ "./gutenberg/components/spacings/options.js");
@@ -749,17 +749,9 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
       type: 'string',
       default: 'wide'
     },
-    BlockImage: {
+    BlockBackgroundImage: {
       type: 'object',
       default: null
-    },
-    BlockImageClass: {
-      type: 'string',
-      default: ''
-    },
-    BlockImagePosition: {
-      type: 'string',
-      default: ''
     },
     BlockCtaToggle: {
       type: 'boolean',
@@ -816,9 +808,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
       BlockTitleTag,
       BlockTitle,
       BlockSubtitle,
-      BlockImage,
-      BlockImageClass,
-      BlockImagePosition,
+      BlockBackgroundImage,
       BlockCtaToggle,
       BlockCtaLabel,
       BlockCtaUrl,
@@ -903,31 +893,31 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
     /* Media */
 
     /**
-     * Save BlockImage attribute
+     * Save BlockBackgroundImage attribute
      * 
-     * @param {object} newBlockImage
+     * @param {object} newBlockBackgroundImage
      * 
      * @return {void} 
      */
-    const onSelectBlockImage = newBlockImage => {
+    const onSelectBlockBackgroundImage = newBlockBackgroundImage => {
       setAttributes({
-        BlockImage: newBlockImage
+        BlockBackgroundImage: newBlockBackgroundImage
       });
     };
 
     /**
-     * Create BlockImage preview
+     * Create BlockBackgroundImage preview
      * 
-     * @param {object} BlockImage
+     * @param {object} BlockBackgroundImage
      * 
      * @return {mixed}
      */
-    const BlockImagePreview = BlockImage => {
-      if (BlockImage) {
+    const BlockBackgroundImagePreview = BlockBackgroundImage => {
+      if (BlockBackgroundImage) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "custom-block-main-image-preview",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-            src: BlockImage.url
+            src: BlockBackgroundImage.url
           })
         });
       }
@@ -935,16 +925,16 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
     };
 
     /**
-     * Create button for deleting BlockImage attribute
+     * Create button for deleting BlockBackgroundImage attribute
      * 
-     * @param {object} BlockImage
+     * @param {object} BlockBackgroundImage
      * 
      * @return {mixed}
      */
-    const ButtonRemoveBlockImage = BlockImage => {
-      if (BlockImage) {
+    const ButtonRemoveBlockBackgroundImage = BlockBackgroundImage => {
+      if (BlockBackgroundImage) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(IconButton, {
-          onClick: onClickRemoveBlockImage,
+          onClick: onClickRemoveBlockBackgroundImage,
           icon: "dismiss",
           className: "editor-media-placeholder__button is-button is-default is-large",
           children: __('Remove Block Image', domain)
@@ -958,22 +948,9 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
      * 
      * @return {void} 
      */
-    const onClickRemoveBlockImage = BlockImage => {
+    const onClickRemoveBlockBackgroundImage = () => {
       setAttributes({
-        BlockImage: null
-      });
-    };
-
-    /**
-     * Save BlockImagePosition attribute
-     * 
-     * @param {string} newBlockImagePosition
-     * 
-     * @return {void}
-     */
-    const onSelectBlockImagePosition = newBlockImagePosition => {
-      setAttributes({
-        BlockImagePosition: newBlockImagePosition
+        BlockBackgroundImage: null
       });
     };
 
@@ -1119,18 +1096,18 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             onChange: onSelectBlockContainerWidth
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(PanelBody, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(PanelBody, {
         title: __('Media', domain),
         initialOpen: false,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "tr-media-upload-box",
           style: {
             marginBottom: '40px'
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(MediaUpload, {
-            onSelect: onSelectBlockImage,
+            onSelect: onSelectBlockBackgroundImage,
             type: "image",
-            value: BlockImage,
+            value: BlockBackgroundImage,
             render: ({
               open
             }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(IconButton, {
@@ -1139,22 +1116,8 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
               className: "editor-media-placeholder__button is-button is-default is-large",
               children: __('Image', domain)
             })
-          }), BlockImagePreview(BlockImage, BlockImage), ButtonRemoveBlockImage(BlockImage)]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "tr-settings-box",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(SelectControl, {
-            label: __('Image position', domain),
-            value: BlockImagePosition,
-            options: [{
-              label: __('Left', domain),
-              value: 'text-and-image--reversed'
-            }, {
-              label: __('Right', domain),
-              value: ''
-            }],
-            onChange: onSelectBlockImagePosition
-          })
-        })]
+          }), BlockBackgroundImagePreview(BlockBackgroundImage, BlockBackgroundImage), ButtonRemoveBlockBackgroundImage(BlockBackgroundImage)]
+        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(PanelBody, {
         title: __('Navigation settings', domain),
         initialOpen: false,
@@ -1313,9 +1276,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
       BlockTitleTag,
       BlockTitle,
       BlockSubtitle,
-      BlockImage,
-      BlockImageClass,
-      BlockImagePosition,
+      BlockBackgroundImage,
       BlockCtaToggle,
       BlockCtaLabel,
       BlockCtaUrl,
@@ -1324,80 +1285,63 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
       BlockCtaCustomClass,
       BlockCtaClass,
       BlockCtaAligment,
-      BlockPreview,
       ...BlockSpacingAttributes
     } = attributes;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
-        className: `text-and-image ${BlockImagePosition} ${BlockBackgroundColor} ${(0,_components_global_functions_functions__WEBPACK_IMPORTED_MODULE_2__.getSpacingValues)(BlockSpacingAttributes)}`,
+        className: `hero-section ${BlockBackgroundColor} ${(0,_components_global_functions_functions__WEBPACK_IMPORTED_MODULE_2__.getSpacingValues)(BlockSpacingAttributes)}`,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "container-fluid",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "wrapper",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
               className: `container ${BlockContainerWidth}`,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "text-and-image__inner",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "text",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                className: "hero__inner",
+                children: [BlockBackgroundImage != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                    className: "text__inner",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                      className: "part-content",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                        className: "heading",
-                        children: [BlockTitle != null && BlockTitle.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                          className: "title",
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(RichText.Content, {
-                            tagName: BlockTitleTag,
-                            className: "rich-block-title",
-                            format: "string",
-                            value: BlockTitle
-                          })
-                        }), BlockSubtitle != null && BlockSubtitle.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                          className: "subtitle",
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(RichText.Content, {
-                            tagName: "p",
-                            className: "rich-block-subtitle",
-                            format: "string",
-                            value: BlockSubtitle
-                          })
-                        })]
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                        className: `content`,
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(InnerBlocks.Content, {})
-                      })]
-                    })
-                  })
-                }), BlockImage != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                    className: "image",
+                    className: "bg-image",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                       className: `image__inner`,
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-                        src: BlockImage.url,
-                        alt: BlockImage.alt,
-                        width: BlockImage.sizes.full.width,
-                        height: BlockImage.sizes.full.height,
-                        className: `${BlockImageClass}`
+                        src: BlockBackgroundImage.url,
+                        alt: BlockBackgroundImage.alt,
+                        width: BlockBackgroundImage.sizes.full.width,
+                        height: BlockBackgroundImage.sizes.full.height
+                      })
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                  className: "hero__title",
+                  children: [BlockTitle != null && BlockTitle.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(RichText.Content, {
+                    tagName: BlockTitleTag,
+                    className: "rich-block-title",
+                    format: "string",
+                    value: BlockTitle
+                  }), BlockSubtitle != null && BlockSubtitle.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                    className: "subtitle",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(RichText.Content, {
+                      tagName: "span",
+                      className: "rich-block-subtitle",
+                      format: "string",
+                      value: BlockSubtitle
+                    })
+                  })]
+                }), BlockCtaToggle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                  children: BlockCtaUrl != null && BlockCtaUrl.length > 0 && BlockCtaLabel != null && BlockCtaLabel.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                    className: `cta-wrapper  ${BlockCtaAligment}`,
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+                      href: BlockCtaUrl,
+                      target: BlockCtaTarget,
+                      rel: "noopener noreferrer",
+                      className: `${BlockCtaClass} ${BlockCtaCustomClass}`,
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                        children: BlockCtaLabel
                       })
                     })
                   })
                 })]
-              }), BlockCtaToggle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-                children: BlockCtaUrl != null && BlockCtaUrl.length > 0 && BlockCtaLabel != null && BlockCtaLabel.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: `cta-wrapper  ${BlockCtaAligment}`,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-                    href: BlockCtaUrl,
-                    target: BlockCtaTarget,
-                    rel: "noopener noreferrer",
-                    className: `${BlockCtaClass} ${BlockCtaCustomClass}`,
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                      children: BlockCtaLabel
-                    })
-                  })
-                })
-              })]
+              })
             })
           })
         })
@@ -1407,4 +1351,4 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 });
 /******/ })()
 ;
-//# sourceMappingURL=text_and_image.js.map
+//# sourceMappingURL=hero_section.js.map
