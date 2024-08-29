@@ -79,6 +79,25 @@ return [
             'category'      => $main
         ],
 
+        // Page header
+        'page-header' => [
+            'name'          => 'page-header',
+            'domain'        => $domain,
+            'dependency'    => [
+                'wp-i18n',
+                'wp-element',
+                'wp-blocks',
+                'wp-block-editor',
+                'wp-components',
+                'wp-api',
+                'wp-data',
+            ],
+            'title'         => __('Page header', $domain),
+            'description'   => __('Generate Page header section.', $domain),
+            'icon'          => 'admin-page',
+            'category'      => $main
+        ],
+
     ],
 
 ];

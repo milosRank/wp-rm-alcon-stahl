@@ -27,7 +27,7 @@ const TEMPLATE = [
     ]
 ];
 
-const domain = 'rm-alcon-stahl';
+const domain = customAttributes.domain;
 
 // Import Spacing Component
 import { BlockSpacingAttributes } from "../../components/spacings";

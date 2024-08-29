@@ -660,9 +660,9 @@ module.exports = window["ReactJSXRuntime"];
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-/*!***************************************!*\
-  !*** ./gutenberg/blocks/text/text.js ***!
-  \***************************************/
+/*!*****************************************************!*\
+  !*** ./gutenberg/blocks/page-header/page_header.js ***!
+  \*****************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_spacings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/spacings */ "./gutenberg/components/spacings/index.js");
 /* harmony import */ var _components_spacings_options__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/spacings/options */ "./gutenberg/components/spacings/options.js");
@@ -684,7 +684,6 @@ const {
 const {
   InspectorControls,
   RichText,
-  InnerBlocks,
   MediaUpload
 } = wp.blockEditor;
 
@@ -696,17 +695,8 @@ const {
   IconButton
 } = wp.components;
 
-// Define Allowed Blocks
-const ALLOWED_BLOCKS = ['core/freeform'];
-
 // Get custom attributes
 const customAttributes = custom_attributes;
-
-// Define template for nested blocks
-const TEMPLATE = [['core/freeform', {
-  fontSize: '1.25em',
-  placeholder: 'Insert content.'
-}]];
 const domain = customAttributes.domain;
 
 // Import Spacing Component
@@ -749,13 +739,9 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
       type: 'string',
       default: 'wide'
     },
-    BlockDecorationImage: {
+    BlockBackgroundImage: {
       type: 'object',
       default: null
-    },
-    BlockContentAligment: {
-      type: 'string',
-      default: ''
     },
     BlockCtaToggle: {
       type: 'boolean',
@@ -783,10 +769,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
       type: 'string',
       default: 'button button--primary'
     },
-    BlockCtaAligment: {
-      type: 'string',
-      default: ' text-left'
-    },
     ..._components_spacings__WEBPACK_IMPORTED_MODULE_0__.BlockSpacingAttributes
   },
   /**
@@ -810,8 +792,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
       BlockTitleTag,
       BlockTitle,
       BlockSubtitle,
-      BlockDecorationImage,
-      BlockContentAligment,
+      BlockBackgroundImage,
       BlockCtaToggle,
       BlockCtaLabel,
       BlockCtaUrl,
@@ -819,7 +800,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
       BlockCtaRel,
       BlockCtaCustomClass,
       BlockCtaClass,
-      BlockCtaAligment,
       ...BlockSpacingAttributes
     } = attributes;
 
@@ -896,31 +876,31 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
     /* Media */
 
     /**
-     * Save BlockDecorationImage attribute
+     * Save BlockBackgroundImage attribute
      * 
-     * @param {object} newBlockDecorationImage
+     * @param {object} newBlockBackgroundImage
      * 
      * @return {void} 
      */
-    const onSelectBlockDecorationImage = newBlockDecorationImage => {
+    const onSelectBlockBackgroundImage = newBlockBackgroundImage => {
       setAttributes({
-        BlockDecorationImage: newBlockDecorationImage
+        BlockBackgroundImage: newBlockBackgroundImage
       });
     };
 
     /**
-     * Create BlockDecorationImage preview
+     * Create BlockBackgroundImage preview
      * 
-     * @param {object} BlockDecorationImage
+     * @param {object} BlockBackgroundImage
      * 
      * @return {mixed}
      */
-    const BlockDecorationImagePreview = BlockDecorationImage => {
-      if (BlockDecorationImage) {
+    const BlockBackgroundImagePreview = BlockBackgroundImage => {
+      if (BlockBackgroundImage) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "custom-block-main-image-preview",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-            src: BlockDecorationImage.url
+            src: BlockBackgroundImage.url
           })
         });
       }
@@ -928,16 +908,16 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
     };
 
     /**
-     * Create button for deleting BlockDecorationImage attribute
+     * Create button for deleting BlockBackgroundImage attribute
      * 
-     * @param {object} BlockDecorationImage
+     * @param {object} BlockBackgroundImage
      * 
      * @return {mixed}
      */
-    const ButtonRemoveBlockDecorationImage = BlockDecorationImage => {
-      if (BlockDecorationImage) {
+    const ButtonRemoveBlockBackgroundImage = BlockBackgroundImage => {
+      if (BlockBackgroundImage) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(IconButton, {
-          onClick: onClickRemoveBlockDecorationImage,
+          onClick: onClickRemoveBlockBackgroundImage,
           icon: "dismiss",
           className: "editor-media-placeholder__button is-button is-default is-large",
           children: __('Remove Block Image', domain)
@@ -951,24 +931,9 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
      * 
      * @return {void} 
      */
-    const onClickRemoveBlockDecorationImage = () => {
+    const onClickRemoveBlockBackgroundImage = () => {
       setAttributes({
-        BlockDecorationImage: null
-      });
-    };
-
-    /* Aligment */
-
-    /**
-     * Save BlockContentAligment attribute
-     * 
-     * @param {string} newBlockContentAligment
-     * 
-     * @return {void} 
-     */
-    const onSelectBlockContentAligment = newBlockContentAligment => {
-      setAttributes({
-        BlockContentAligment: newBlockContentAligment
+        BlockBackgroundImage: null
       });
     };
 
@@ -1043,19 +1008,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
         BlockCtaClass: newBlockCtaClass
       });
     };
-
-    /**
-     * Save BlockCtaAligment attribute
-     * 
-     * @param {string} newBlockCtaAligment
-     * 
-     * @return {void} 
-     */
-    const onSelectBlockCtaAligment = newBlockCtaAligment => {
-      setAttributes({
-        BlockCtaAligment: newBlockCtaAligment
-      });
-    };
     return [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(InspectorControls, {
       style: {
         marginBottom: '40px'
@@ -1123,9 +1075,9 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             marginBottom: '40px'
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(MediaUpload, {
-            onSelect: onSelectBlockDecorationImage,
+            onSelect: onSelectBlockBackgroundImage,
             type: "image",
-            value: BlockDecorationImage,
+            value: BlockBackgroundImage,
             render: ({
               open
             }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(IconButton, {
@@ -1134,7 +1086,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
               className: "editor-media-placeholder__button is-button is-default is-large",
               children: __('Decoration Image', domain)
             })
-          }), BlockDecorationImagePreview(BlockDecorationImage, BlockDecorationImage), ButtonRemoveBlockDecorationImage(BlockDecorationImage)]
+          }), BlockBackgroundImagePreview(BlockBackgroundImage, BlockBackgroundImage), ButtonRemoveBlockBackgroundImage(BlockBackgroundImage)]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(PanelBody, {
         title: __('Navigation settings', domain),
@@ -1212,42 +1164,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             }],
             onChange: onSelectBlockCtaClass
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "tr-settings-box",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(SelectControl, {
-            label: __('Alignment', domain),
-            value: BlockCtaAligment,
-            options: [{
-              label: 'Left',
-              value: ' text-left'
-            }, {
-              label: 'Center',
-              value: ' text-center'
-            }, {
-              label: 'Right',
-              value: ' text-right'
-            }],
-            onChange: onSelectBlockCtaAligment
-          })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(PanelBody, {
-        title: __('Alignment settings', domain),
-        initialOpen: false,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "tr-settings-box",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(SelectControl, {
-            label: __('Content', domain),
-            value: BlockCtaAligment,
-            options: [{
-              label: 'Left',
-              value: ''
-            }, {
-              label: 'Right',
-              value: ' content-right'
-            }],
-            onChange: onSelectBlockCtaAligment
-          })
-        })
       }), (0,_components_spacings__WEBPACK_IMPORTED_MODULE_0__["default"])(props, domain, _components_spacings_options__WEBPACK_IMPORTED_MODULE_1__["default"]), renderBackgroundOptions(props, domain, BACKGROUND_OPTIONS)]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "admin-control-box",
@@ -1284,15 +1201,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
           value: BlockSubtitle,
           onChange: onChangeBlockSubtitle
         }, "editable")]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "tr-form-row",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-          children: [__('Block Content', domain), ":"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(InnerBlocks, {
-          allowedBlocks: ALLOWED_BLOCKS,
-          template: TEMPLATE,
-          templateLock: "all"
-        })]
       })]
     })];
   },
@@ -1312,8 +1220,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
       BlockTitleTag,
       BlockTitle,
       BlockSubtitle,
-      BlockDecorationImage,
-      BlockContentAligment,
+      BlockBackgroundImage,
       BlockCtaToggle,
       BlockCtaLabel,
       BlockCtaUrl,
@@ -1321,26 +1228,25 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
       BlockCtaRel,
       BlockCtaCustomClass,
       BlockCtaClass,
-      BlockCtaAligment,
       ...BlockSpacingAttributes
     } = attributes;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
-        className: `text-and-heading ${BlockBackgroundColor} ${(0,_components_global_functions_functions__WEBPACK_IMPORTED_MODULE_2__.getSpacingValues)(BlockSpacingAttributes)} ${BlockCtaAligment}`,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
+        className: `page-header ${BlockBackgroundColor} ${(0,_components_global_functions_functions__WEBPACK_IMPORTED_MODULE_2__.getSpacingValues)(BlockSpacingAttributes)}`,
+        children: [BlockBackgroundImage != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+          className: "bg-image",
+          src: BlockBackgroundImage.url,
+          alt: BlockBackgroundImage.alt,
+          width: BlockBackgroundImage.sizes.full.width,
+          height: BlockBackgroundImage.sizes.full.height
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "container-fluid",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "wrapper",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: `container ${BlockContainerWidth}`,
-              children: [BlockDecorationImage != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-                className: "decoration",
-                src: BlockDecorationImage.url,
-                alt: BlockDecorationImage.alt,
-                width: BlockDecorationImage.sizes.full.width,
-                height: BlockDecorationImage.sizes.full.height
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "text-and-heading__inner",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                className: "page-header__inner",
                 children: [BlockTitle != null && BlockTitle.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                   className: "title",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(RichText.Content, {
@@ -1357,13 +1263,10 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
                     format: "string",
                     value: BlockSubtitle
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: `text`,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(InnerBlocks.Content, {})
                 })]
               }), BlockCtaToggle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
                 children: BlockCtaUrl != null && BlockCtaUrl.length > 0 && BlockCtaLabel != null && BlockCtaLabel.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: `cta-wrapper  ${BlockCtaAligment}`,
+                  className: `cta-wrapper`,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
                     href: BlockCtaUrl,
                     target: BlockCtaTarget,
@@ -1377,11 +1280,11 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
               })]
             })
           })
-        })
+        })]
       })
     });
   }
 });
 /******/ })()
 ;
-//# sourceMappingURL=text.js.map
+//# sourceMappingURL=page_header.js.map

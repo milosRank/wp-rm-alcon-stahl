@@ -697,7 +697,7 @@ const {
 
 // Get custom attributes
 const customAttributes = custom_attributes;
-const domain = 'rm-alcon-stahl';
+const domain = customAttributes.domain;
 
 // Import Spacing Component
 

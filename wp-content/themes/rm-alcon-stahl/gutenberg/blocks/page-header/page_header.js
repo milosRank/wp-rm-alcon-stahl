@@ -5,27 +5,13 @@ const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
 
 // Import WordPress editor controls
-const { InspectorControls, RichText, InnerBlocks, MediaUpload } = wp.blockEditor;
+const { InspectorControls, RichText, MediaUpload } = wp.blockEditor;
 
 // Import WordPress Components
 const { PanelBody, SelectControl, ToggleControl, IconButton } = wp.components;
 
-// Define Allowed Blocks
-const ALLOWED_BLOCKS = ['core/freeform'];
-
 // Get custom attributes
 const customAttributes = custom_attributes;
-
-// Define template for nested blocks
-const TEMPLATE = [
-    [
-        'core/freeform',
-        {
-            fontSize: '1.25em',
-            placeholder: 'Insert content.'
-        }
-    ]
-];
 
 const domain = customAttributes.domain;
 
@@ -64,13 +50,9 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             type: 'string',
             default: 'wide',
         },
-        BlockDecorationImage: {
+        BlockBackgroundImage: {
             type: 'object',
             default: null,
-        },
-        BlockContentAligment: {
-            type: 'string',
-            default: ''
         },
         BlockCtaToggle: {
             type: 'boolean',
@@ -98,10 +80,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             type: 'string',
             default: 'button button--primary',
         },
-        BlockCtaAligment: {
-            type: 'string',
-            default: ' text-left',
-        },
         ...BlockSpacingAttributes
     },
 
@@ -124,8 +102,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             BlockTitleTag,
             BlockTitle,
             BlockSubtitle,
-            BlockDecorationImage,
-            BlockContentAligment,
+            BlockBackgroundImage,
             BlockCtaToggle,
             BlockCtaLabel,
             BlockCtaUrl,
@@ -133,7 +110,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             BlockCtaRel,
             BlockCtaCustomClass,
             BlockCtaClass,
-            BlockCtaAligment,
             ...BlockSpacingAttributes
 
         } = attributes;
@@ -209,31 +185,31 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
         /* Media */
 
         /**
-         * Save BlockDecorationImage attribute
+         * Save BlockBackgroundImage attribute
          * 
-         * @param {object} newBlockDecorationImage
+         * @param {object} newBlockBackgroundImage
          * 
          * @return {void} 
          */
-        const onSelectBlockDecorationImage = newBlockDecorationImage => {
+        const onSelectBlockBackgroundImage = newBlockBackgroundImage => {
 
-            setAttributes({ BlockDecorationImage: newBlockDecorationImage });
+            setAttributes({ BlockBackgroundImage: newBlockBackgroundImage });
 
         }
 
         /**
-         * Create BlockDecorationImage preview
+         * Create BlockBackgroundImage preview
          * 
-         * @param {object} BlockDecorationImage
+         * @param {object} BlockBackgroundImage
          * 
          * @return {mixed}
          */
-        const BlockDecorationImagePreview = (BlockDecorationImage) => {
+        const BlockBackgroundImagePreview = (BlockBackgroundImage) => {
 
-            if (BlockDecorationImage) {
+            if (BlockBackgroundImage) {
                 return (
                     <div className="custom-block-main-image-preview">
-                        <img src={BlockDecorationImage.url} />
+                        <img src={BlockBackgroundImage.url} />
                     </div>
                 )
             }
@@ -243,17 +219,17 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
         }
 
         /**
-         * Create button for deleting BlockDecorationImage attribute
+         * Create button for deleting BlockBackgroundImage attribute
          * 
-         * @param {object} BlockDecorationImage
+         * @param {object} BlockBackgroundImage
          * 
          * @return {mixed}
          */
-        const ButtonRemoveBlockDecorationImage = (BlockDecorationImage) => {
+        const ButtonRemoveBlockBackgroundImage = (BlockBackgroundImage) => {
 
-            if (BlockDecorationImage) {
+            if (BlockBackgroundImage) {
                 return (
-                    <IconButton onClick={onClickRemoveBlockDecorationImage} icon="dismiss"
+                    <IconButton onClick={onClickRemoveBlockBackgroundImage} icon="dismiss"
                         className="editor-media-placeholder__button is-button is-default is-large">
                         {__('Remove Block Image', domain)}
                     </IconButton>
@@ -268,24 +244,9 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
          * 
          * @return {void} 
          */
-        const onClickRemoveBlockDecorationImage = () => {
+        const onClickRemoveBlockBackgroundImage = () => {
 
-            setAttributes({ BlockDecorationImage: null });
-
-        }
-
-        /* Aligment */
-
-        /**
-         * Save BlockContentAligment attribute
-         * 
-         * @param {string} newBlockContentAligment
-         * 
-         * @return {void} 
-         */
-        const onSelectBlockContentAligment = newBlockContentAligment => {
-
-            setAttributes({ BlockContentAligment: newBlockContentAligment });
+            setAttributes({ BlockBackgroundImage: null });
 
         }
 
@@ -360,19 +321,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 
         }
 
-        /**
-         * Save BlockCtaAligment attribute
-         * 
-         * @param {string} newBlockCtaAligment
-         * 
-         * @return {void} 
-         */
-        const onSelectBlockCtaAligment = newBlockCtaAligment => {
-
-            setAttributes({ BlockCtaAligment: newBlockCtaAligment });
-
-        }
-
         return ([
 
             <InspectorControls style={{ marginBottom: '40px' }}>
@@ -419,9 +367,9 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 
                     <div className="tr-media-upload-box" style={{ marginBottom: '40px' }} >
                         <MediaUpload
-                            onSelect={onSelectBlockDecorationImage}
+                            onSelect={onSelectBlockBackgroundImage}
                             type="image"
-                            value={BlockDecorationImage}
+                            value={BlockBackgroundImage}
                             render={({ open }) => (
 
                                 <IconButton onClick={open} icon="upload"
@@ -433,9 +381,9 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
                             )}
                         />
 
-                        {BlockDecorationImagePreview(BlockDecorationImage, BlockDecorationImage)}
+                        {BlockBackgroundImagePreview(BlockBackgroundImage, BlockBackgroundImage)}
 
-                        {ButtonRemoveBlockDecorationImage(BlockDecorationImage)}
+                        {ButtonRemoveBlockBackgroundImage(BlockBackgroundImage)}
 
                     </div>
                 </PanelBody>
@@ -501,35 +449,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 
                     </div>
 
-                    <div className="tr-settings-box">
-
-                        <SelectControl label={__('Alignment', domain)} value={BlockCtaAligment}
-                            options={[
-                                { label: 'Left', value: ' text-left' },
-                                { label: 'Center', value: ' text-center' },
-                                { label: 'Right', value: ' text-right' },
-                            ]}
-                            onChange={onSelectBlockCtaAligment}
-                        />
-
-                    </div>
-
-                </PanelBody>
-
-                <PanelBody title={__('Alignment settings', domain)} initialOpen={false}>
-
-                    <div className="tr-settings-box">
-
-                        <SelectControl label={__('Content', domain)} value={BlockCtaAligment}
-                            options={[
-                                { label: 'Left', value: '' },
-                                { label: 'Right', value: ' content-right' },
-                            ]}
-                            onChange={onSelectBlockCtaAligment}
-                        />
-
-                    </div>
-
                 </PanelBody>
 
                 {renderSpacingOptions(props, domain, SPACING_OPTIONS)}
@@ -581,14 +500,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 
                 </div>
 
-                <div className="tr-form-row">
-
-                    <label>{__('Block Content', domain)}:</label>
-
-                    <InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={TEMPLATE} templateLock="all" />
-
-                </div>
-
             </div>
 
         ]);
@@ -609,8 +520,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             BlockTitleTag,
             BlockTitle,
             BlockSubtitle,
-            BlockDecorationImage,
-            BlockContentAligment,
+            BlockBackgroundImage,
             BlockCtaToggle,
             BlockCtaLabel,
             BlockCtaUrl,
@@ -618,23 +528,21 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             BlockCtaRel,
             BlockCtaCustomClass,
             BlockCtaClass,
-            BlockCtaAligment,
             ...BlockSpacingAttributes
-
         } = attributes;
 
         return (
         <>
-            <section className={`text-and-heading ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)} ${BlockCtaAligment}`}>
+            <section className={`page-header ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)}`}>
+
+                {(BlockBackgroundImage != null) &&
+                    <img className="bg-image" src={BlockBackgroundImage.url} alt={BlockBackgroundImage.alt} width={BlockBackgroundImage.sizes.full.width} height={BlockBackgroundImage.sizes.full.height} />
+                }
                 <div className="container-fluid">
                     <div className="wrapper">
                         <div className={`container ${BlockContainerWidth}`}>
 
-                            {(BlockDecorationImage != null) &&
-                                <img className="decoration" src={BlockDecorationImage.url} alt={BlockDecorationImage.alt} width={BlockDecorationImage.sizes.full.width} height={BlockDecorationImage.sizes.full.height} />
-                            }
-
-                            <div className="text-and-heading__inner">
+                            <div className="page-header__inner">
 
                                 {(BlockTitle != null && BlockTitle.length > 0) &&
 
@@ -659,17 +567,13 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
                                     </div>
                                 }
 
-                                <div className={`text`}>
-                                    <InnerBlocks.Content />
-                                </div>
-
                             </div>
 
                             {(BlockCtaToggle) &&
 
                                 <>
                                     {((BlockCtaUrl != null && BlockCtaUrl.length > 0) && (BlockCtaLabel != null && BlockCtaLabel.length > 0)) &&
-                                        <div className={`cta-wrapper  ${BlockCtaAligment}`}>
+                                        <div className={`cta-wrapper`}>
 
                                             <a href={BlockCtaUrl}
                                                 target={BlockCtaTarget}

@@ -707,7 +707,7 @@ const TEMPLATE = [['core/freeform', {
   fontSize: '1.25em',
   placeholder: 'Insert content.'
 }]];
-const domain = 'rm-alcon-stahl';
+const domain = customAttributes.domain;
 
 // Import Spacing Component
 

@@ -14,10 +14,11 @@
         "build-bootstrap": "sass assets/scss/bootstrap.scss --style=expanded --quiet | postcss --use autoprefixer --no-map > assets/css/bootstrap.css",
         "build-gutenberg-blocks": "wp-scripts build",
         "start-gutenberg-blocks": "wp-scripts start",
-        "watch-all-blocks": "wp-scripts start /gutenberg/blocks/text/text.js /gutenberg/blocks/hero-section/hero_section.js /gutenberg/blocks/text-and-image/text_and_image.js --output-path=gutenberg/blocks/assets/js",
+        "watch-all-blocks": "wp-scripts start /gutenberg/blocks/page-header/page_header.js /gutenberg/blocks/text/text.js /gutenberg/blocks/hero-section/hero_section.js /gutenberg/blocks/text-and-image/text_and_image.js --output-path=gutenberg/blocks/assets/js",
         "watch-text-and-image": "wp-scripts start /gutenberg/blocks/text-and-image/text_and_image.js --output-path=gutenberg/blocks/assets/js",
         "watch-hero-section": "wp-scripts start /gutenberg/blocks/hero-section/hero_section.js --output-path=gutenberg/blocks/assets/js",
-        "watch-text": "wp-scripts start /gutenberg/blocks/text/text.js --output-path=gutenberg/blocks/assets/js"
+        "watch-text": "wp-scripts start /gutenberg/blocks/text/text.js --output-path=gutenberg/blocks/assets/js",
+        "watch-page-header": "wp-scripts start /gutenberg/blocks/page-header/page_header.js --output-path=gutenberg/blocks/assets/js"
     },
     "author": "Milos Rankovic",
     "license": "ISC",

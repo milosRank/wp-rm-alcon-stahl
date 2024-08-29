@@ -13,7 +13,7 @@ const { PanelBody, SelectControl, ToggleControl, IconButton } = wp.components;
 // Get custom attributes
 const customAttributes = custom_attributes;
 
-const domain = 'rm-alcon-stahl';
+const domain = customAttributes.domain;
 
 // Import Spacing Component
 import { BlockSpacingAttributes } from "../../components/spacings";
