@@ -98,6 +98,25 @@ return [
             'category'      => $main
         ],
 
+        // Table and image
+        'table-and-image' => [
+            'name'          => 'table-and-image',
+            'domain'        => $domain,
+            'dependency'    => [
+                'wp-i18n',
+                'wp-element',
+                'wp-blocks',
+                'wp-block-editor',
+                'wp-components',
+                'wp-api',
+                'wp-data',
+            ],
+            'title'         => __('Table & image', $domain),
+            'description'   => __('Generate Table & Image section.', $domain),
+            'icon'          => 'editor-table',
+            'category'      => $main
+        ],
+
     ],
 
 ];
