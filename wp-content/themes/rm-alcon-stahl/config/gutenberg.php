@@ -117,6 +117,25 @@ return [
             'category'      => $main
         ],
 
+        // Map with text
+        'map-with-text' => [
+            'name'          => 'map-with-text',
+            'domain'        => $domain,
+            'dependency'    => [
+                'wp-i18n',
+                'wp-element',
+                'wp-blocks',
+                'wp-block-editor',
+                'wp-components',
+                'wp-api',
+                'wp-data',
+            ],
+            'title'         => __('Map with text', $domain),
+            'description'   => __('Generate Map with text section.', $domain),
+            'icon'          => 'sticky',
+            'category'      => $main
+        ],
+
     ],
 
 ];

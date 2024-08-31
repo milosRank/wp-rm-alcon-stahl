@@ -12,6 +12,24 @@
     margin-top: 300px;
     margin-bottom: 300px;
 
+    &.map-on-right {
+
+        .map-and-text__inner {
+            direction: rtl;
+
+            .text {
+                padding-left: 0;
+                padding-right: 60px;
+                text-align: left;
+            }
+
+            .contact-info .line-separator {
+                margin-left: 0;
+                margin-right: auto;
+            }
+        }
+    }
+
     .map-and-text__inner {
         display: grid;
         grid-template-columns: 784px auto;
@@ -75,7 +93,7 @@
     .map-and-text {
 
         .map-and-text__inner {
-            
+
             .text {
                 padding-left: 60px;
             }
@@ -109,7 +127,8 @@
 
             .text {
                 margin-bottom: 50px;
-                padding-left: 0;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
                 order: -1;
 
                 ul.pdf-list {
