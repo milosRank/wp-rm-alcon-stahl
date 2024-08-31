@@ -136,6 +136,25 @@ return [
             'category'      => $main
         ],
 
+        // Contact
+        'contact' => [
+            'name'          => 'contact',
+            'domain'        => $domain,
+            'dependency'    => [
+                'wp-i18n',
+                'wp-element',
+                'wp-blocks',
+                'wp-block-editor',
+                'wp-components',
+                'wp-api',
+                'wp-data',
+            ],
+            'title'         => __('Contact', $domain),
+            'description'   => __('Generate Contact section.', $domain),
+            'icon'          => 'phone',
+            'category'      => $main
+        ],
+
     ],
 
 ];

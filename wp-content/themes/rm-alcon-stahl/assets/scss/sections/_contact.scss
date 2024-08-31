@@ -16,12 +16,47 @@
 .contact {
     padding-top: 150px;
     padding-bottom: 150px;
+    position: relative;
+    background-color: #070D1D;
 
-    // ==== Modificator 1. ====
-    &.contact-img-background {
-        background-image: url("../img/corporate/contact-form-bg.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
+    .bg-image-wrapper {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        z-index: 1;
+
+        .bg-image {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: $primary-color;
+            opacity: 0.3;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            z-index: 2;
+        }
+    }
+
+    .container-fluid {
+        position: relative;
+        z-index: 2;
     }
 
     .form__inner {
