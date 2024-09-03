@@ -442,7 +442,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
                             options={[
                                 { label: 'Primary', value: 'button button--primary' },
                                 { label: 'Secondary', value: 'button button--secondary' },
-                                { label: 'Tertiary', value: 'button button--tertiary' },
                             ]}
                             onChange={onSelectBlockCtaClass}
                         />
