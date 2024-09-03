@@ -123,6 +123,13 @@
         right: 400px;
         top: -50px;
     }
+
+    &.error {
+
+        .text-and-heading__inner {
+            max-width: unset;
+        }
+    }
 }
 
 

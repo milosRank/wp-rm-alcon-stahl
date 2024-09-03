@@ -188,3 +188,86 @@ add_action('admin_enqueue_scripts', function () {
  * Hook to add new block categories
  */
 add_filter('block_categories', 'add_new_block_categories', 10, 1);
+
+
+// ==== PUMPS ====
+
+/**
+ * Register Custom Post Type for Pumps
+ * 
+ * @return {Void}
+ */
+function create_pump_post_type() {
+
+    register_post_type(
+        'pump',
+        array(
+            'labels'      => array(
+                'name'          => __('Pumps'),
+                'singular_name' => __('Pump'),
+            ),
+            'public'      => true,
+            'has_archive' => true,
+            'rewrite'     => array('slug' => 'pump'),
+            'supports'    => array('title', 'editor', 'thumbnail'),
+            'menu_position' => 5,
+            'show_in_rest' => true,
+        )
+    );
+
+}
+
+
+// /**
+//  * Add Custom Meta Boxes
+//  * 
+//  * @return {Void}
+//  */
+// function add_pump_meta_boxes() {
+//     add_meta_box('pump_details', 'Pump Details', 'pump_meta_box_callback', 'pump', 'normal', 'high');
+// }
+
+
+// /**
+//  * Handle pump metabox adding
+//  * 
+//  * @return {Void}
+//  */
+// function pump_meta_box_callback($post) {
+
+//     $model_number = get_post_meta($post->ID, 'model_number', true);
+//     $serial_number = get_post_meta($post->ID, 'serial_number', true);
+//     $price = get_post_meta($post->ID, 'price', true);
+
+//     echo '<label for="model_number">Model Number: </label>';
+//     echo '<input type="text" name="model_number" value="' . esc_attr($model_number) . '" size="25" />';
+//     echo '<br><label for="serial_number">Serial Number: </label>';
+//     echo '<input type="text" name="serial_number" value="' . esc_attr($serial_number) . '" size="25" />';
+//     echo '<br><label for="price">Price: </label>';
+//     echo '<input type="number" name="price" value="' . esc_attr($price) . '" size="25" />';
+
+// }
+
+
+// /**
+//  * Saves pump metabox data
+//  * 
+//  * @return {Void}
+//  */
+// function save_pump_meta_boxes_data($post_id) {
+
+//     if (array_key_exists('model_number', $_POST)) {
+//         update_post_meta($post_id, 'model_number', $_POST['model_number']);
+//     }
+//     if (array_key_exists('serial_number', $_POST)) {
+//         update_post_meta($post_id, 'serial_number', $_POST['serial_number']);
+//     }
+//     if (array_key_exists('price', $_POST)) {
+//         update_post_meta($post_id, 'price', $_POST['price']);
+//     }
+
+// }
+
+add_action('init', 'create_pump_post_type');
+// add_action('add_meta_boxes', 'add_pump_meta_boxes');
+// add_action('save_post', 'save_pump_meta_boxes_data');
