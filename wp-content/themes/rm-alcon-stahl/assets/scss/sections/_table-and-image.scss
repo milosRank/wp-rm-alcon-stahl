@@ -247,6 +247,13 @@
             margin-right: 32px;
         }
     }
+
+    &.single-pump {
+
+        .image-box img {
+            max-width: 240px;
+        }
+    }
 }
 
 
