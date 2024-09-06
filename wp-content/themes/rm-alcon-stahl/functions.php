@@ -7,7 +7,7 @@ include 'global.php';
 /**
  * Retrive gutenberg blocks configuration
  * 
- * @return { Array } - array of all blocks configuration
+ * @return Array - array of all blocks configuration
  */
 function get_gutenberg_blocks_config() {
 
@@ -23,7 +23,7 @@ function get_gutenberg_blocks_config() {
 /**
  * Retrive all gutenberg blocks categories
  * 
- * @return { Array } - array of all blocks categories
+ * @return Array - array of all blocks categories
  */
 function get_gutenberg_blocks_categories() {
 
@@ -39,9 +39,9 @@ function get_gutenberg_blocks_categories() {
 /**
  * Add new gutenberg block categories
  * 
- * @param { Array } $categories - Array of existing categories
+ * @param Array $categories - Array of existing categories
  * 
- * @return { Array } - array of all categories (old + new)
+ * @return Array - array of all categories (old + new)
  */
 function add_new_block_categories($categories) {
 
@@ -52,6 +52,8 @@ function add_new_block_categories($categories) {
 
 /**
  * Enqueue custom styles from theme
+ * 
+ * @return Void
  */
 function enqueue_styles() {
 
@@ -64,6 +66,8 @@ function enqueue_styles() {
 
 /**
  * Enqueue custom scripts from theme
+ * 
+ * @return Void
  */
 function enqueue_scripts() {
 
@@ -78,6 +82,8 @@ function enqueue_scripts() {
 
 /**
  * Register custom navigation menus for the theme.
+ * 
+ * @return Void
  */
 function register_menus() {
 
@@ -92,6 +98,8 @@ function register_menus() {
 
 /**
  * Setup the theme
+ * 
+ * @return Void
  */
 function setup_theme() {
 
@@ -104,6 +112,8 @@ function setup_theme() {
 
 /**
  * Register all custom gutenberg blocks in theme
+ * 
+ * @return Void
  */
 function register_theme_blocks() {
 
@@ -195,7 +205,7 @@ add_filter('block_categories', 'add_new_block_categories', 10, 1);
 /**
  * Register Custom Post Type for Pumps
  * 
- * @return {Void}
+ * @return Void
  */
 function create_pump_post_type() {
 
@@ -209,65 +219,60 @@ function create_pump_post_type() {
             'public'      => true,
             'has_archive' => true,
             'rewrite'     => array('slug' => 'pump'),
-            'supports'    => array('title', 'editor', 'thumbnail'),
+            'supports'    => array('title', 'editor', 'thumbnail'), // Editor for HTML and thumbnail for image
+            'taxonomies'  => array('category'), // Support for categories
             'menu_position' => 5,
-            'show_in_rest' => true,
+            'show_in_rest' => false,
         )
     );
 
 }
 
+/**
+ * Add Custom Meta Boxes
+ * 
+ * @return Void
+ */
+function add_pump_meta_boxes() {
+    add_meta_box('pump_details', 'Pump Details', 'pump_meta_box_callback', 'pump', 'normal', 'default');;
+}
 
-// /**
-//  * Add Custom Meta Boxes
-//  * 
-//  * @return {Void}
-//  */
-// function add_pump_meta_boxes() {
-//     add_meta_box('pump_details', 'Pump Details', 'pump_meta_box_callback', 'pump', 'normal', 'high');
-// }
+/**
+ * Handle pump metabox adding
+ * 
+ * @param Object $post - Current post
+ * 
+ * @return Void
+ */
+function pump_meta_box_callback($post) {
 
+    $description_title = get_post_meta($post->ID, 'description_title', true); // Fetch description_title if it exists
+    $description_subtitle = get_post_meta($post->ID, 'description_subtitle', true); // Fetch description_subtitle if it exists
 
-// /**
-//  * Handle pump metabox adding
-//  * 
-//  * @return {Void}
-//  */
-// function pump_meta_box_callback($post) {
+    echo '<label for="description_title">Description Title: </label>';
+    echo '<input type="text" name="description_title" value="' . esc_attr($description_title) . '" size="25" />';
+    echo '<br><label for="description_subtitle">Description Subtitle: </label>';
+    echo '<input type="text" name="description_subtitle" value="' . esc_attr($description_subtitle) . '" size="25" />';
+}
 
-//     $model_number = get_post_meta($post->ID, 'model_number', true);
-//     $serial_number = get_post_meta($post->ID, 'serial_number', true);
-//     $price = get_post_meta($post->ID, 'price', true);
+/**
+ * Saves pump metabox data
+ * 
+ * @param String $post_id - current post ID
+ * 
+ * @return Void
+ */
+function save_pump_meta_boxes_data($post_id) {
 
-//     echo '<label for="model_number">Model Number: </label>';
-//     echo '<input type="text" name="model_number" value="' . esc_attr($model_number) . '" size="25" />';
-//     echo '<br><label for="serial_number">Serial Number: </label>';
-//     echo '<input type="text" name="serial_number" value="' . esc_attr($serial_number) . '" size="25" />';
-//     echo '<br><label for="price">Price: </label>';
-//     echo '<input type="number" name="price" value="' . esc_attr($price) . '" size="25" />';
+    if (array_key_exists('description_title', $_POST)) {
+        update_post_meta($post_id, 'description_title', $_POST['description_title']);
+    }
+    if (array_key_exists('description_subtitle', $_POST)) {
+        update_post_meta($post_id, 'description_subtitle', $_POST['description_subtitle']);
+    }
 
-// }
-
-
-// /**
-//  * Saves pump metabox data
-//  * 
-//  * @return {Void}
-//  */
-// function save_pump_meta_boxes_data($post_id) {
-
-//     if (array_key_exists('model_number', $_POST)) {
-//         update_post_meta($post_id, 'model_number', $_POST['model_number']);
-//     }
-//     if (array_key_exists('serial_number', $_POST)) {
-//         update_post_meta($post_id, 'serial_number', $_POST['serial_number']);
-//     }
-//     if (array_key_exists('price', $_POST)) {
-//         update_post_meta($post_id, 'price', $_POST['price']);
-//     }
-
-// }
+}
 
 add_action('init', 'create_pump_post_type');
-// add_action('add_meta_boxes', 'add_pump_meta_boxes');
-// add_action('save_post', 'save_pump_meta_boxes_data');
+add_action('add_meta_boxes', 'add_pump_meta_boxes');
+add_action('save_post', 'save_pump_meta_boxes_data');
