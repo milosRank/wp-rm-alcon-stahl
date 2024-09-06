@@ -1,72 +1,36 @@
-<?php
-    require_once 'pump/pump_types.php';
-    use function Pump\get_pump_types;
-?>
-
 <?php get_header(); ?>
 
-    <!-- Main start -->
-    <main>
-
-        <!-- Elements list start -->
-        <section class="elements-list pumps">
-            <div class="container-fluid">
-                <div class="wrapper">
-                    <div class="container">
-
-                        <!-- Elements list inner start -->
-                        <div class="elements-list__inner">
-
-                            <div class="title">
-                                <h2>Allweiler</h2>
+<div class="pump-archive">
+    <?php if (have_posts()) : ?>
+        <h1><?php post_type_archive_title(); ?></h1>
+        <ul class="pump-list">
+            <?php while (have_posts()) : the_post(); ?>
+                <li class="pump-item">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php if (has_post_thumbnail()) : ?>
+                            <div class="pump-thumbnail">
+                                <?php the_post_thumbnail('thumbnail', array('class' => 'pump-image')); ?>
                             </div>
-                            <div class="subtitle">
-                                <p>RM Alkon Stahl u ponudi ima sledeće tipove pumpi nemačkog proizvođača ALLWEILER</p>
-                                <div class="line-decoration"></div>
+                        <?php endif; ?>
+                        
+                        <h2 class="pump-title"><?php the_title(); ?></h2>
+                        
+                        <?php
+                        // Get the custom description field
+                        $description = get_post_meta(get_the_ID(), 'description', true);
+                        if ($description) :
+                        ?>
+                            <div class="pump-description">
+                                <?php echo wp_trim_words($description, 20, '...'); // Limit to 20 words ?>
                             </div>
-
-                            <div class="elements-holder items-auto">
-
-                            <?php
-
-                                // Get all pumps
-                                $result = get_pump_types();
-
-                                while ($row = $result->fetch_assoc()) : ?>
-
-                                    <!-- Element start -->
-                                    <div class="element">
-                                        <div class="element__inner">
-                                            <div class="image-box shadow">
-                                                <img src="<?= $row['image']; ?>" alt="<?= $row['name']; ?>" width="<?= $row['image']; ?>" width="240" height="240">
-                                            </div>
-                                            <div class="title">
-                                                <p><?= $row['name']; ?></p>
-                                            </div>
-                                            <div class="description">
-                                                <p><?= $row['description']; ?></p>
-                                            </div>
-                                            <div class="cta-wrapper">
-                                                <a
-                                                    class="button button-diagonal-arrow-down"
-                                                    href="./type.php?id=<?= $row['id']; ?>">
-                                                        Detaljnije
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div> <!-- Element end -->
-
-                                <?php endwhile; ?>
-
-                            </div>
-
-                        </div> <!-- Elements list inner end -->
-
-                    </div>
-                </div>
-            </div>
-        </section> <!-- Elements list end -->
-
-    </main> <!-- Main end -->
+                        <?php endif; ?>
+                    </a>
+                </li>
+            <?php endwhile; ?>
+        </ul>
+    <?php else : ?>
+        <p><?php _e('No pumps found.'); ?></p>
+    <?php endif; ?>
+</div>
 
 <?php get_footer(); ?>

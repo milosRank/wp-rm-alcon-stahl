@@ -5,6 +5,63 @@ $domain = 'rm-alcon-stahl';
 $main   = 'rm-alcon-stahl-main-category';
 
 
+
+
+// function render_pump_category_block() {
+
+//     // Get all pump categories (terms from 'category' taxonomy)
+//     $categories = get_terms(array(
+//         'taxonomy' => 'category',
+//         'hide_empty' => false,
+//     ));
+
+//     if (empty($categories) || is_wp_error($categories)) {
+//         return 'No pump categories found';
+//     }
+
+//     // Start output buffering
+//     ob_start();
+
+//     echo '<div class="pump-categories">';
+
+//     // Loop through categories and display pumps within each
+//     foreach ($categories as $category) {
+//         echo '<h2>' . esc_html($category->name) . '</h2>';
+
+//         // Fetch pumps in this category
+//         $args = array(
+//             'post_type' => 'pump',
+//             'tax_query' => array(
+//                 array(
+//                     'taxonomy' => 'category',
+//                     'field' => 'term_id',
+//                     'terms' => $category->term_id,
+//                 ),
+//             ),
+//         );
+//         $query = new WP_Query($args);
+
+//         if ($query->have_posts()) {
+//             echo '<ul>';
+//             while ($query->have_posts()) {
+//                 $query->the_post();
+//                 echo '<li><a href="' . esc_url(get_permalink()) . '">' . get_the_title() . '</a></li>';
+//             }
+//             echo '</ul>';
+//         } else {
+//             echo '<p>No pumps found in this category.</p>';
+//         }
+
+//         echo '<a href="' . esc_url(get_category_link($category->term_id)) . '">View all pumps in ' . esc_html($category->name) . '</a>';
+//     }
+
+//     echo '</div>';
+
+//     // End output buffering and return
+//     return ob_get_clean();
+// }
+
+
 /**
  * Gutenberg blocks configuration
  */
@@ -153,6 +210,80 @@ return [
             'description'   => __('Generate Contact section.', $domain),
             'icon'          => 'phone',
             'category'      => $main
+        ],
+
+        // Pump category
+        'pump-category' => [
+            'name'          => 'pump-category',
+            'domain'        => $domain,
+            'dependency'    => [
+                'wp-editor',
+                'wp-api-fetch',
+                'wp-i18n',
+                'wp-element',
+                'wp-blocks',
+                'wp-block-editor',
+                'wp-components',
+                'wp-api',
+                'wp-data',
+            ],
+            'title'         => __('Pump category', $domain),
+            'description'   => __('Generate Pump category section.', $domain),
+            'icon'          => 'category',
+            'category'      => $main,
+            'render_cb'     => function() {
+
+                // Get all pump categories (terms from 'category' taxonomy)
+                $categories = get_terms(array(
+                    'taxonomy' => 'category',
+                    'hide_empty' => false,
+                ));
+
+                if (empty($categories) || is_wp_error($categories)) {
+                    return 'No pump categories found';
+                }
+
+                // Start output buffering
+                ob_start();
+
+                echo '<div class="pump-categories">';
+
+                // Loop through categories and display pumps within each
+                foreach ($categories as $category) {
+                    echo '<h2>' . esc_html($category->name) . '</h2>';
+
+                    // Fetch pumps in this category
+                    $args = array(
+                        'post_type' => 'pump',
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'category',
+                                'field' => 'term_id',
+                                'terms' => $category->term_id,
+                            ),
+                        ),
+                    );
+                    $query = new WP_Query($args);
+
+                    if ($query->have_posts()) {
+                        echo '<ul>';
+                        while ($query->have_posts()) {
+                            $query->the_post();
+                            echo '<li><a href="' . esc_url(get_permalink()) . '">' . get_the_title() . '</a></li>';
+                        }
+                        echo '</ul>';
+                    } else {
+                        echo '<p>No pumps found in this category.</p>';
+                    }
+
+                    echo '<a href="' . esc_url(get_category_link($category->term_id)) . '">View all pumps in ' . esc_html($category->name) . '</a>';
+                }
+
+                echo '</div>';
+
+                // End output buffering and return
+                return ob_get_clean();
+            }
         ],
 
     ],
