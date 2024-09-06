@@ -155,6 +155,35 @@ function register_theme_blocks() {
 
 
 /**
+ * Add custom wrapper around any default block
+ * 
+ * @param String $block_content - Content of the block
+ * 
+ * @return Void
+ */
+function add_wrapper_to_blocks($block_content) {
+
+    // TODO Exclued custom blocks
+
+    // Add wrapper only for certain blocks, if needed
+    if ( ! is_admin() ) { // Make sure this only affects the front-end
+        return 
+        '<section>' .
+            '<div class="container-fluid">' .
+                '<div class="wrapper">' .
+                    '<div class="container">' .
+                        $block_content .
+                    '</div>' . 
+                '</div>' .
+            '</div>' .
+        '</section>';
+    }
+    return $block_content;
+
+}
+
+
+/**
  * Hook function to 'init' action to register custom Gutenberg blocks.
  */
 add_action('init', 'register_theme_blocks');
@@ -199,6 +228,12 @@ add_action('admin_enqueue_scripts', function () {
  * Hook to add new block categories
  */
 add_filter('block_categories', 'add_new_block_categories', 10, 1);
+
+
+/**
+ * Hook when block is rendered
+ */
+add_filter('render_block', 'add_wrapper_to_blocks', 10, 2);
 
 
 // ==== PUMPS ====
@@ -315,21 +350,3 @@ function register_category_sidebars() {
     }
 }
 add_action( 'widgets_init', 'register_category_sidebars' );
-
-function add_wrapper_to_blocks( $block_content, $block ) {
-    // Add wrapper only for certain blocks, if needed
-    if ( ! is_admin() ) { // Make sure this only affects the front-end
-        return 
-        '<section>' .
-            '<div class="container-fluid">' .
-                '<div class="wrapper">' .
-                    '<div class="container">' .
-                        $block_content .
-                    '</div>' . 
-                '</div>' .
-            '</div>' .
-        '</section>';
-    }
-    return $block_content;
-}
-add_filter( 'render_block', 'add_wrapper_to_blocks', 10, 2 );
