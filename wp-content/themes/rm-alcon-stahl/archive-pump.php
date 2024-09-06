@@ -12,9 +12,9 @@
                                 <?php the_post_thumbnail('thumbnail', array('class' => 'pump-image')); ?>
                             </div>
                         <?php endif; ?>
-                        
+
                         <h2 class="pump-title"><?php the_title(); ?></h2>
-                        
+
                         <?php
                         // Get the custom description field
                         $description = get_post_meta(get_the_ID(), 'description', true);

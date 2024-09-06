@@ -283,6 +283,21 @@ function create_pump_post_type() {
 
 }
 
+
+/**
+ * Include pumps in category archive
+ * 
+ * @return Void
+ */
+function include_pumps_in_category_archive($query) {
+
+    if ( ! is_admin() && $query->is_main_query() && is_category() ) {
+        $query->set( 'post_type', array( 'post', 'pump' ) );
+    }
+
+}
+
+
 /**
  * Add Custom Meta Boxes
  * 
@@ -291,6 +306,7 @@ function create_pump_post_type() {
 function add_pump_meta_boxes() {
     add_meta_box('pump_details', 'Pump Details', 'pump_meta_box_callback', 'pump', 'normal', 'default');;
 }
+
 
 /**
  * Handle pump metabox adding
@@ -310,6 +326,7 @@ function pump_meta_box_callback($post) {
     echo '<input type="text" name="description_subtitle" value="' . esc_attr($description_subtitle) . '" size="25" />';
 }
 
+
 /**
  * Saves pump metabox data
  * 
@@ -328,6 +345,8 @@ function save_pump_meta_boxes_data($post_id) {
 
 }
 
+
 add_action('init', 'create_pump_post_type');
 add_action('add_meta_boxes', 'add_pump_meta_boxes');
 add_action('save_post', 'save_pump_meta_boxes_data');
+add_action('pre_get_posts', 'include_pumps_in_category_archive');
