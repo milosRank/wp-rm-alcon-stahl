@@ -1,5 +1,13 @@
 <?php get_header(); ?>
 
+<?php 
+            $category_id = get_queried_object_id();
+            if ( is_active_sidebar( 'category-sidebar-' . $category_id ) ) : ?>
+                <aside id="category-sidebar" class="widget-area">
+                    <?php dynamic_sidebar( 'category-sidebar-' . $category_id ); ?>
+                </aside>
+            <?php endif; ?>
+
 
 <?php if (have_posts()) : ?>
 

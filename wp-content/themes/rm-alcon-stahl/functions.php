@@ -103,65 +103,11 @@ function register_menus() {
  */
 function setup_theme() {
 
-    add_theme_support( 'wp-block-styles' ); // Support for block styles Podrška za stilove blokova
-    add_theme_support( 'align-wide' ); // Support for block wides Podrška za široke i pune širine blokova
-    add_theme_support( 'editor-styles' ); // Support for editor styles Podrška za editor stilove
+    add_theme_support( 'wp-block-styles' ); // Support for block styles
+    add_theme_support( 'align-wide' ); // Support for block wides
+    add_theme_support( 'editor-styles' ); // Support for editor styles
 
 }
-
-// function render_pump_category_block($attributes) {
-
-//     // Get all pump categories (terms from 'category' taxonomy)
-//     $categories = get_terms(array(
-//         'taxonomy' => 'category',
-//         'hide_empty' => false,
-//     ));
-
-//     if (empty($categories) || is_wp_error($categories)) {
-//         return 'No pump categories found';
-//     }
-
-//     // Start output buffering
-//     ob_start();
-
-//     echo '<div class="pump-categories">';
-
-//     // Loop through categories and display pumps within each
-//     foreach ($categories as $category) {
-//         echo '<h2>' . esc_html($category->name) . '</h2>';
-
-//         // Fetch pumps in this category
-//         $args = array(
-//             'post_type' => 'pump',
-//             'tax_query' => array(
-//                 array(
-//                     'taxonomy' => 'category',
-//                     'field' => 'term_id',
-//                     'terms' => $category->term_id,
-//                 ),
-//             ),
-//         );
-//         $query = new WP_Query($args);
-
-//         if ($query->have_posts()) {
-//             echo '<ul>';
-//             while ($query->have_posts()) {
-//                 $query->the_post();
-//                 echo '<li><a href="' . esc_url(get_permalink()) . '">' . get_the_title() . '</a></li>';
-//             }
-//             echo '</ul>';
-//         } else {
-//             echo '<p>No pumps found in this category.</p>';
-//         }
-
-//         echo '<a href="' . esc_url(get_category_link($category->term_id)) . '">View all pumps in ' . esc_html($category->name) . '</a>';
-//     }
-
-//     echo '</div>';
-
-//     // End output buffering and return
-//     return ob_get_clean();
-// }
 
 
 /**
@@ -350,3 +296,40 @@ add_action('init', 'create_pump_post_type');
 add_action('add_meta_boxes', 'add_pump_meta_boxes');
 add_action('save_post', 'save_pump_meta_boxes_data');
 add_action('pre_get_posts', 'include_pumps_in_category_archive');
+
+
+function register_category_sidebars() {
+    // Get all categories
+    $categories = get_categories();
+
+    foreach ( $categories as $category ) {
+        register_sidebar( array(
+            'name'          => sprintf( __( 'Sidebar for %s', 'theme_text_domain' ), $category->name ),
+            'id'            => 'category-sidebar-' . $category->term_id,
+            'description'   => sprintf( __( 'Widgets in this area will be shown in the %s category.', 'theme_text_domain' ), $category->name ),
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        ) );
+    }
+}
+add_action( 'widgets_init', 'register_category_sidebars' );
+
+function add_wrapper_to_blocks( $block_content, $block ) {
+    // Add wrapper only for certain blocks, if needed
+    if ( ! is_admin() ) { // Make sure this only affects the front-end
+        return 
+        '<section>' .
+            '<div class="container-fluid">' .
+                '<div class="wrapper">' .
+                    '<div class="container">' .
+                        $block_content .
+                    '</div>' . 
+                '</div>' .
+            '</div>' .
+        '</section>';
+    }
+    return $block_content;
+}
+add_filter( 'render_block', 'add_wrapper_to_blocks', 10, 2 );
