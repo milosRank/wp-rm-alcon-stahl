@@ -18,7 +18,7 @@
                         </div> <!-- Text and heading inner end -->
 
                         <div class="cta-wrapper text-center margin-top-50">
-                            <a href="index.php" class="button button--primary">Naslovna strana</a>
+                            <a href="<?= get_home_url(); ?>" class="button button--primary">Naslovna strana</a>
                         </div>
 
                     </div>
