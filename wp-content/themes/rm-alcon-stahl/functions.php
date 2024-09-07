@@ -349,20 +349,38 @@ add_action('save_post', 'save_pump_meta_boxes_data');
 add_action('pre_get_posts', 'include_pumps_in_category_archive');
 
 
-function register_category_sidebars() {
+/**
+ * Register widgets
+ * 
+ * @return Void
+ */
+function register_widget_areas() {
+
     // Get all categories
     $categories = get_categories();
 
     foreach ( $categories as $category ) {
-        register_sidebar( array(
-            'name'          => sprintf( __( 'Sidebar for %s', 'theme_text_domain' ), $category->name ),
+
+        register_sidebar(array(
+            'name'          => sprintf( __( 'Sidebar for %s', 'theme_text_domain' ), $category->name),
             'id'            => 'category-sidebar-' . $category->term_id,
+            'description'   => sprintf( __('Widgets in this area will be shown in the %s category.', 'theme_text_domain'), $category->name ),
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        ));
+
+        register_sidebar(array(
+            'name'          => 'Sidebar for Pumps page',
+            'id'            => 'pumps-sidebar',
             'description'   => sprintf( __( 'Widgets in this area will be shown in the %s category.', 'theme_text_domain' ), $category->name ),
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h2 class="widget-title">',
             'after_title'   => '</h2>',
-        ) );
+        ));
+
     }
 }
-add_action( 'widgets_init', 'register_category_sidebars' );
+add_action( 'widgets_init', 'register_widget_areas' );

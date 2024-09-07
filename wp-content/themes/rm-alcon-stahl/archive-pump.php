@@ -20,11 +20,25 @@
     </div>
 </section> <!-- Page header end -->
 
+<?php
+    if ( is_active_sidebar('pumps-sidebar')) :
+?>
+    <div id="pumps-sidebar" class="widget-area">
+        <?php dynamic_sidebar('pumps-sidebar'); ?>
+    </div>
+<?php endif; ?>
+
 <section class="pumps-categories-list">
     <div class="container-fluid">
         <div class="wrapper">
             <div class="container">
                 <div class="pumps-categories-list__inner">
+
+                <div class="heading">
+                    <div class="title">
+                        <h2>Pogledajte naše pumpe</h2>
+                    </div>
+                </div>
 
                     <?php
 
