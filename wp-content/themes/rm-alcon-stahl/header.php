@@ -28,6 +28,8 @@
     <link rel="preload" href="<?php echo get_theme_file_uri(); ?>/assets/fonts/Sora-Regular.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="<?php echo get_theme_file_uri(); ?>/assets/fonts/Sora-SemiBold.woff" as="font" type="font/woff" crossorigin>
 
+    <title><?php wp_title('|', true, 'right'); ?> RM Alkon Stahl</title>
+
     <?php wp_head(); ?>
 
 </head>

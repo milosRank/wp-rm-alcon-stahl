@@ -158,15 +158,31 @@ function register_theme_blocks() {
  * Add custom wrapper around any default block
  * 
  * @param String $block_content - Content of the block
+ * @param Object $block - Object with data about block
  * 
  * @return Void
  */
-function add_wrapper_to_blocks($block_content) {
+function add_wrapper_to_blocks($block_content, $block) {
 
-    // TODO Exclued custom blocks
+    // Get all registered blocks
+    $all_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
+
+    // Get only custom blocks
+    $custom_blocks = array();
+    foreach ( $all_blocks as $block_name => $block_type ) {
+
+        if ( strpos( $block_name, 'rm-alcon-stahl/' ) === 0 ) {
+            $custom_blocks[] = $block_name;
+        }
+    }
+
+    // Check if current block is custom block
+    if ( in_array( $block['blockName'], $custom_blocks ) ) {
+        return $block_content; // If yes, don't add custom wrapper
+    }
 
     // Add wrapper only for certain blocks, if needed
-    if ( ! is_admin() ) { // Make sure this only affects the front-end
+    if ( ! is_admin() ) {
         return 
         '<section>' .
             '<div class="container-fluid">' .
