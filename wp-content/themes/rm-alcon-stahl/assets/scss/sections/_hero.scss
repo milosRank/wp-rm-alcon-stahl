@@ -1,7 +1,5 @@
 .hero-section {
-    min-height: calc(100vh - 122px);
-    padding: 195px 0 163px 0;
-    // background-color: $sixth-color;
+    padding: 100px 0;
 
     .hero__inner {
         margin: 0 205px;
@@ -27,7 +25,7 @@
                     display: block;
                     width: 100%;
                     height: 100%;
-                    background-color: $white;
+                    background-color: $pure-black;
                     opacity: 0.3;
                     left: 0;
                     right: 0;
@@ -50,10 +48,14 @@
             position: relative;
             z-index: 1;
         }
+
+        .cta-wrapper {
+            margin-top: 0;
+        }
     }
 
     .hero__inner .hero__title {
-        margin-bottom: 345px;
+        padding-bottom: 345px;
 
         h1,
         h2,
@@ -84,7 +86,8 @@
 }
 
 
-.bg-navy-blue {
+.bg-navy-blue,
+.bg-navy-light-blue {
 
     .bg-image {
 
@@ -107,7 +110,7 @@
         padding: 75px 0;
 
         .hero__inner .hero__title {
-            margin-bottom: 400px;
+            padding-bottom: 400px;
         }
     }
 }
@@ -164,7 +167,7 @@
         }
 
         .hero__inner .hero__title {
-            margin-bottom: 50px;
+            padding-bottom: 50px;
         }
     }
 }
@@ -193,7 +196,7 @@
         }
 
         .cta-wrapper {
-            text-align: center;
+            text-align: center !important;
         }
     }
 }

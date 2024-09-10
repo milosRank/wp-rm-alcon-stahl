@@ -147,6 +147,9 @@ const BACKGROUND_OPTIONS = [{
 }, {
   label: "Navy Blue",
   value: "bg-navy-blue"
+}, {
+  label: "Navy Light Blue",
+  value: "bg-navy-light-blue"
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BACKGROUND_OPTIONS);
 
@@ -745,10 +748,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
     },
     BlockBackgroundColor,
     // Imported as a component
-    BlockContainerWidth: {
-      type: 'string',
-      default: 'wide'
-    },
     BlockMapPosition: {
       type: 'string',
       default: ''
@@ -807,7 +806,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 
     // Set attributes
     const {
-      BlockContainerWidth,
       BlockBackgroundColor,
       BlockTitleTag,
       BlockTitle,
@@ -826,19 +824,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
     } = attributes;
 
     /* General */
-
-    /**
-     * Save BlockContainerWidth attribute
-     *
-     * @param {string}  newBlockContainerWidth
-    * 
-    * @return {void}
-    */
-    const onSelectBlockContainerWidth = newBlockContainerWidth => {
-      setAttributes({
-        BlockContainerWidth: newBlockContainerWidth
-      });
-    };
 
     /* Title */
 
@@ -1041,30 +1026,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             onChange: onSelectBlockTitleTag
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(PanelBody, {
-        title: __('Layout Settings', domain),
-        initialOpen: false,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "tr-settings-box",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(SelectControl, {
-            label: __('Chose layout width', domain),
-            value: BlockContainerWidth,
-            options: [{
-              label: __('Wide', domain),
-              value: 'container-wide'
-            }, {
-              label: __('Narrow', domain),
-              value: 'container-narrow'
-            }, {
-              label: __('Medium Narrow', domain),
-              value: 'container-medium-narrow'
-            }, {
-              label: __('Extra Narrow', domain),
-              value: 'container-extra-narrow'
-            }],
-            onChange: onSelectBlockContainerWidth
-          })
-        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(PanelBody, {
         title: __('Map', domain),
         initialOpen: false,
@@ -1247,7 +1208,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
     attributes
   }) => {
     const {
-      BlockContainerWidth,
       BlockBackgroundColor,
       BlockTitleTag,
       BlockTitle,
@@ -1323,7 +1283,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "wrapper",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: `container ${BlockContainerWidth}`,
+              className: `container`,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                 className: "map-and-text__inner",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {

@@ -147,6 +147,9 @@ const BACKGROUND_OPTIONS = [{
 }, {
   label: "Navy Blue",
   value: "bg-navy-blue"
+}, {
+  label: "Navy Light Blue",
+  value: "bg-navy-light-blue"
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BACKGROUND_OPTIONS);
 

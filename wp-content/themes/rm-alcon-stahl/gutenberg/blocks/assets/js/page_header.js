@@ -147,6 +147,9 @@ const BACKGROUND_OPTIONS = [{
 }, {
   label: "Navy Blue",
   value: "bg-navy-blue"
+}, {
+  label: "Navy Light Blue",
+  value: "bg-navy-light-blue"
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BACKGROUND_OPTIONS);
 
@@ -1229,7 +1232,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
     } = attributes;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
-        className: `page-header ${BlockBackgroundColor} ${(0,_components_global_functions_functions__WEBPACK_IMPORTED_MODULE_2__.getSpacingValues)(BlockSpacingAttributes)}`,
+        className: `page-header ${BlockBackgroundColor} ${(0,_components_global_functions_functions__WEBPACK_IMPORTED_MODULE_2__.getSpacingValues)(BlockSpacingAttributes)} ${BlockBackgroundImage ? "has-bg-image" : ""}`,
         children: [BlockBackgroundImage != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
           className: "bg-image",
           src: BlockBackgroundImage.url,

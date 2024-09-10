@@ -20,17 +20,22 @@
 */
 
 .text-and-image {
-    margin-top: 250px;
-    margin-bottom: 250px;
+    padding-top: 100px;
+    padding-bottom: 100px;
     scroll-margin-top: 200px;
 
     .text-and-image__inner {
         display: flex;
         align-items: center;
+        column-gap: 50px;
 
         .text,
         .image {
             width: 50%;
+        }
+
+        .text {
+            flex: 1;
         }
 
         .image img {

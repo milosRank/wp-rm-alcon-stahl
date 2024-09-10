@@ -519,12 +519,12 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 
                     <div className="tr-settings-box">
 
-                        <SelectControl label={__('Content', domain)} value={BlockCtaAligment}
+                        <SelectControl label={__('Content', domain)} value={BlockContentAligment}
                             options={[
                                 { label: 'Left', value: '' },
                                 { label: 'Right', value: ' content-right' },
                             ]}
-                            onChange={onSelectBlockCtaAligment}
+                            onChange={onSelectBlockContentAligment}
                         />
 
                     </div>
@@ -624,7 +624,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 
         return (
         <>
-            <section className={`text-and-heading ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)} ${BlockCtaAligment}`}>
+            <section className={`text-and-heading ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)} ${BlockContentAligment}`}>
                 <div className="container-fluid">
                     <div className="wrapper">
                         <div className={`container ${BlockContainerWidth}`}>

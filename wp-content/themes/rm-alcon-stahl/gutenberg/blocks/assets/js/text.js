@@ -147,6 +147,9 @@ const BACKGROUND_OPTIONS = [{
 }, {
   label: "Navy Blue",
   value: "bg-navy-blue"
+}, {
+  label: "Navy Light Blue",
+  value: "bg-navy-light-blue"
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BACKGROUND_OPTIONS);
 
@@ -1234,7 +1237,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
           className: "tr-settings-box",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(SelectControl, {
             label: __('Content', domain),
-            value: BlockCtaAligment,
+            value: BlockContentAligment,
             options: [{
               label: 'Left',
               value: ''
@@ -1242,7 +1245,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
               label: 'Right',
               value: ' content-right'
             }],
-            onChange: onSelectBlockCtaAligment
+            onChange: onSelectBlockContentAligment
           })
         })
       }), (0,_components_spacings__WEBPACK_IMPORTED_MODULE_0__["default"])(props, domain, _components_spacings_options__WEBPACK_IMPORTED_MODULE_1__["default"]), renderBackgroundOptions(props, domain, BACKGROUND_OPTIONS)]
@@ -1323,7 +1326,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
     } = attributes;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
-        className: `text-and-heading ${BlockBackgroundColor} ${(0,_components_global_functions_functions__WEBPACK_IMPORTED_MODULE_2__.getSpacingValues)(BlockSpacingAttributes)} ${BlockCtaAligment}`,
+        className: `text-and-heading ${BlockBackgroundColor} ${(0,_components_global_functions_functions__WEBPACK_IMPORTED_MODULE_2__.getSpacingValues)(BlockSpacingAttributes)} ${BlockContentAligment}`,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "container-fluid",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {

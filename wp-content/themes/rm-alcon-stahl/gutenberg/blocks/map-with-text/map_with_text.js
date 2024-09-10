@@ -60,10 +60,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
             selector: '.rich-block-subtitle',
         },
         BlockBackgroundColor, // Imported as a component
-        BlockContainerWidth: {
-            type: 'string',
-            default: 'wide',
-        },
         BlockMapPosition: {
             type: 'string',
             default: '',
@@ -120,7 +116,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 
         // Set attributes
         const {
-            BlockContainerWidth,
             BlockBackgroundColor,
             BlockTitleTag,
             BlockTitle,
@@ -140,20 +135,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
         } = attributes;
 
         /* General */
-
-        /**
-         * Save BlockContainerWidth attribute
-         *
-         * @param {string}  newBlockContainerWidth
-        * 
-        * @return {void}
-        */
-        const onSelectBlockContainerWidth = newBlockContainerWidth => {
-
-            setAttributes({ BlockContainerWidth: newBlockContainerWidth });
-
-        }
-
 
         /* Title */
 
@@ -344,24 +325,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 
                 </PanelBody>
 
-                <PanelBody title={__('Layout Settings', domain)} initialOpen={false}>
-
-                    <div className="tr-settings-box">
-
-                        <SelectControl label={__('Chose layout width', domain)} value={BlockContainerWidth}
-                            options={[
-                                { label: __('Wide', domain), value: 'container-wide' },
-                                { label: __('Narrow', domain), value: 'container-narrow' },
-                                { label: __('Medium Narrow', domain), value: 'container-medium-narrow' },
-                                { label: __('Extra Narrow', domain), value: 'container-extra-narrow' },
-                            ]}
-                            onChange={onSelectBlockContainerWidth}
-                        />
-
-                    </div>
-
-                </PanelBody>
-
                 <PanelBody title={__('Map', domain)} initialOpen={false} >
 
                     <div className="tr-settings-box">
@@ -537,7 +500,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
     save: ({ attributes }) => {
 
         const {
-            BlockContainerWidth,
             BlockBackgroundColor,
             BlockTitleTag,
             BlockTitle,
@@ -626,7 +588,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
                 <section className={`map-and-text ${BlockMapPosition} ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)}`}>
                     <div className="container-fluid">
                         <div className="wrapper">
-                            <div className={`container ${BlockContainerWidth}`}>
+                            <div className={`container`}>
 
                                 <div className="map-and-text__inner">
 

@@ -544,9 +544,10 @@ table {
 }
 
 
-// Background color modifications
+// ==== Background color modifications ====
 
-.bg-navy-blue {
+.bg-navy-blue,
+.bg-navy-light-blue {
     color: $white;
 
     h1,

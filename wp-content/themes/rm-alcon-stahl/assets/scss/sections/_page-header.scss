@@ -40,7 +40,7 @@
         h5,
         h6 {
             font-size: $extra-large;
-            color: $white;
+            color: $tertiary-color;
             margin-bottom: 0;
         }
     }
@@ -50,7 +50,7 @@
     }
 
     .subtitle {
-        color: $white;
+        color: $tertiary-color;
         margin-bottom: 0;
         font-family:$font-primary-light-italic;
         font-size: 2.4rem;
@@ -60,6 +60,24 @@
 
     .cta-wrapper {
         margin-top: 60px;
+    }
+}
+
+
+// ==== Background color modification ====
+
+.page-header.bg-navy-blue,
+.page-header.bg-navy-light-blue,
+.page-header.has-bg-image {
+
+    .title,
+    .subtitle,
+    .text {
+        color: $white;
+
+        * {
+            color: inherit;
+        }
     }
 }
 

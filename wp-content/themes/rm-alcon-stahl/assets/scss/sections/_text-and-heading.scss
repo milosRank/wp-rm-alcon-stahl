@@ -14,10 +14,14 @@
 */
 
 .text-and-heading {
-    margin-top: 100px;
-    margin-bottom: 100px;
+    padding-top: 100px;
+    padding-bottom: 100px;
     scroll-margin-top: 200px;
     overflow: hidden;
+
+    img.decoration {
+        z-index: 0;
+    }
 
     .container {
         position: relative;
@@ -25,6 +29,13 @@
 
     .text-and-heading__inner {
         max-width: 920px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .cta-wrapper {
+        position: relative;
+        z-index: 1;
     }
 
     .title {
@@ -66,6 +77,7 @@
         .text-and-heading__inner {
             margin-right: 0;
             margin-left: auto;
+            text-align: right;
         }
 
         img.decoration {
@@ -132,6 +144,23 @@
     }
 }
 
+
+
+// ==== Background color modification ====
+
+.text-and-heading.bg-navy-blue,
+.text-and-heading.bg-navy-light-blue {
+
+    .title,
+    .subtitle,
+    .text {
+        color: $white;
+
+        * {
+            color: inherit;
+        }
+    }
+}
 
 
 

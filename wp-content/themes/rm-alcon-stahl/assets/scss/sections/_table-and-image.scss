@@ -258,6 +258,23 @@
 
 
 
+// ==== Background color modification ====
+
+.table-and-image.bg-navy-blue,
+.table-and-image.bg-navy-light-blue {
+
+    .table-and-image-title,
+    .subtitle,
+    .text {
+        color: $white;
+
+        * {
+            color: inherit;
+        }
+    }
+}
+
+
 
 // RESPONSIVE
 

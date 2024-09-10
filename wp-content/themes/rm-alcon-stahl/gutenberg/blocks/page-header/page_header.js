@@ -532,7 +532,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 
         return (
         <>
-            <section className={`page-header ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)}`}>
+            <section className={`page-header ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)} ${BlockBackgroundImage ? "has-bg-image" : ""}`}>
 
                 {(BlockBackgroundImage != null) &&
                     <img className="bg-image" src={BlockBackgroundImage.url} alt={BlockBackgroundImage.alt} width={BlockBackgroundImage.sizes.full.width} height={BlockBackgroundImage.sizes.full.height} />

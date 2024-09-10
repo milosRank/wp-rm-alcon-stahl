@@ -324,7 +324,7 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
 
         return (
             <>
-                <section className={`contact ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)}`}>
+                <section className={`contact ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)} ${BlockImage ? "has-bg-image" : ""}`}>
 
                     {(BlockImage != null) &&
                         <div className="bg-image-wrapper">

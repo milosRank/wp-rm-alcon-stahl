@@ -410,8 +410,6 @@ registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
                             options={[
                                 { label: __('Wide', domain), value: 'container-wide' },
                                 { label: __('Narrow', domain), value: 'container-narrow' },
-                                { label: __('Medium Narrow', domain), value: 'container-medium-narrow' },
-                                { label: __('Extra Narrow', domain), value: 'container-extra-narrow' },
                             ]}
                             onChange={onSelectBlockContainerWidth}
                         />

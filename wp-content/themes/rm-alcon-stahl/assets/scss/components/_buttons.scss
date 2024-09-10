@@ -137,7 +137,9 @@ a.button {
 
 // ==== Background color modifications ====
 
-.bg-navy-blue {
+.bg-navy-blue,
+.bg-navy-light-blue,
+.has-bg-image {
 
     .button--primary {
         border: 1px solid $button-color-white;
@@ -158,6 +160,24 @@ a.button {
         &:hover {
             background-color: $button-color-blue;
             color: $button-color-white;
+        }
+    }
+}
+
+.has-bg-image {
+
+    .button--primary {
+
+        &:hover {
+            background-color: $white !important;
+        }
+    }
+
+    .button--secondary {
+        color: $button-color-blue !important;
+
+        &:hover {
+            color: $white !important;
         }
     }
 }

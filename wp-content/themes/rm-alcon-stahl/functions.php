@@ -177,7 +177,8 @@ function add_wrapper_to_blocks($block_content, $block) {
     }
 
     // Check if current block is custom block
-    if ( in_array( $block['blockName'], $custom_blocks ) ) {
+    // Or if current block is HTML editor
+    if ( in_array( $block['blockName'], $custom_blocks ) || $block['blockName'] == 'core/freeform') {
         return $block_content; // If yes, don't add custom wrapper
     }
 
