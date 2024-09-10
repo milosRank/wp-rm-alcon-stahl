@@ -27,7 +27,7 @@ const TEMPLATE = [
     ]
 ];
 
-const domain = 'rm-alcon-stahl';
+const domain = customAttributes.domain;
 
 // Import Spacing Component
 import { BlockSpacingAttributes } from "../../components/spacings";
@@ -39,7 +39,7 @@ import { getSpacingValues } from "../../components/global-functions/functions";
 import { BackgroundColorComponent } from "../../components/background-color/bundle";
 const { BlockBackgroundColor, renderBackgroundOptions, BACKGROUND_OPTIONS } = BackgroundColorComponent;
 
-registerBlockType('rm-alcon-stahl/text-and-image', {
+registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
     title: customAttributes.title,
     description: customAttributes.description,
     icon: customAttributes.icon,
@@ -512,7 +512,6 @@ registerBlockType('rm-alcon-stahl/text-and-image', {
                             options={[
                                 { label: 'Primary', value: 'button button--primary' },
                                 { label: 'Secondary', value: 'button button--secondary' },
-                                { label: 'Tertiary', value: 'button button--tertiary' },
                             ]}
                             onChange={onSelectBlockCtaClass}
                         />
@@ -629,20 +628,20 @@ registerBlockType('rm-alcon-stahl/text-and-image', {
 
         return (
             <>
-                <section class={`text-and-image ${BlockImagePosition} ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)}`}>
-                    <div class="container-fluid">
-                        <div class="wrapper">
+                <section className={`text-and-image ${BlockImagePosition} ${BlockBackgroundColor} ${getSpacingValues(BlockSpacingAttributes)}`}>
+                    <div className="container-fluid">
+                        <div className="wrapper">
                             <div className={`container ${BlockContainerWidth}`}>
 
-                                <div class="text-and-image__inner">
+                                <div className="text-and-image__inner">
 
-                                    <div class="text">
-                                        <div class="text__inner">
-                                            <div class="part-content">
+                                    <div className="text">
+                                        <div className="text__inner">
+                                            <div className="part-content">
 
-                                                <div class="heading">
+                                                <div className="heading">
                                                     {(BlockTitle != null && BlockTitle.length > 0) &&
-                                                        <div class="title">
+                                                        <div className="title">
                                                             <RichText.Content
                                                                 tagName={BlockTitleTag}
                                                                 className="rich-block-title"
@@ -654,7 +653,7 @@ registerBlockType('rm-alcon-stahl/text-and-image', {
                                                     }
 
                                                     {(BlockSubtitle != null && BlockSubtitle.length > 0) &&
-                                                        <div class="subtitle">
+                                                        <div className="subtitle">
                                                             <RichText.Content
                                                                 tagName="p"
                                                                 className="rich-block-subtitle"
@@ -713,7 +712,7 @@ registerBlockType('rm-alcon-stahl/text-and-image', {
                         </div>
                     </div>
                 </section>
-
-            </>)
+            </>
+        )
     },
 });

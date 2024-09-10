@@ -15,6 +15,10 @@ const BACKGROUND_OPTIONS = [
         label: "Navy Blue",
         value: "bg-navy-blue"
     },
+    {
+        label: "Navy Light Blue",
+        value: "bg-navy-light-blue"
+    },
 ]
 
 export default BACKGROUND_OPTIONS;

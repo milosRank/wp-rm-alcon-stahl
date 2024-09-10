@@ -130,6 +130,33 @@ strong {
 }
 
 
+.heading {
+    margin-bottom: 50px;
+
+    .title {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: $medium-large;
+            margin-bottom: 0;
+        }
+    }
+
+    .subtitle {
+        @include font($font-primary-italic,400,$small,2.3rem);
+        color: $secondary-color;
+    }
+
+    .title + .subtitle {
+        margin-top: 30px;
+    }
+}
+
+
 
 // ==== Image ====
 
@@ -513,5 +540,24 @@ table {
     .container {
         padding-right: 34px;
         padding-left: 34px;
+    }
+}
+
+
+// ==== Background color modifications ====
+
+.bg-navy-blue,
+.bg-navy-light-blue {
+    color: $white;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a,
+    p {
+        color: $white;
     }
 }

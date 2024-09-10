@@ -9,8 +9,26 @@
 */
 
 .map-and-text {
-    margin-top: 300px;
-    margin-bottom: 300px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    &.map-on-right {
+
+        .map-and-text__inner {
+            direction: rtl;
+
+            .text {
+                padding-left: 0;
+                padding-right: 60px;
+                text-align: left;
+            }
+
+            .contact-info .line-separator {
+                margin-left: 0;
+                margin-right: auto;
+            }
+        }
+    }
 
     .map-and-text__inner {
         display: grid;
@@ -27,9 +45,12 @@
             display: flex;
             flex-direction: column;
             padding-left: 168px;
-            
-            .title {
+
+            .heading {
                 margin-bottom: 45px;
+            }
+
+            .title {
 
                 h1,
                 h2,
@@ -39,6 +60,16 @@
                 h6 {
                     margin-bottom: 0;
                 }
+            }
+
+            .subtitle {
+                @include font($font-primary-italic,400,$small,2.3rem);
+                color: $secondary-color;
+                margin-top: 10px;
+            }
+
+            .title + .subtitle {
+                margin-top: 25px;
             }
 
             .location {
@@ -75,7 +106,7 @@
     .map-and-text {
 
         .map-and-text__inner {
-            
+
             .text {
                 padding-left: 60px;
             }
@@ -109,7 +140,8 @@
 
             .text {
                 margin-bottom: 50px;
-                padding-left: 0;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
                 order: -1;
 
                 ul.pdf-list {

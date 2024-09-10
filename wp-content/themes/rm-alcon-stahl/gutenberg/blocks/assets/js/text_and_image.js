@@ -147,6 +147,9 @@ const BACKGROUND_OPTIONS = [{
 }, {
   label: "Navy Blue",
   value: "bg-navy-blue"
+}, {
+  label: "Navy Light Blue",
+  value: "bg-navy-light-blue"
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BACKGROUND_OPTIONS);
 
@@ -707,7 +710,7 @@ const TEMPLATE = [['core/freeform', {
   fontSize: '1.25em',
   placeholder: 'Insert content.'
 }]];
-const domain = 'rm-alcon-stahl';
+const domain = customAttributes.domain;
 
 // Import Spacing Component
 
@@ -723,7 +726,7 @@ const {
   renderBackgroundOptions,
   BACKGROUND_OPTIONS
 } = _components_background_color_bundle__WEBPACK_IMPORTED_MODULE_3__.BackgroundColorComponent;
-registerBlockType('rm-alcon-stahl/text-and-image', {
+registerBlockType(`${customAttributes.domain}/${customAttributes.name}`, {
   title: customAttributes.title,
   description: customAttributes.description,
   icon: customAttributes.icon,
@@ -1225,9 +1228,6 @@ registerBlockType('rm-alcon-stahl/text-and-image', {
             }, {
               label: 'Secondary',
               value: 'button button--secondary'
-            }, {
-              label: 'Tertiary',
-              value: 'button button--tertiary'
             }],
             onChange: onSelectBlockCtaClass
           })
@@ -1329,25 +1329,25 @@ registerBlockType('rm-alcon-stahl/text-and-image', {
     } = attributes;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
-        class: `text-and-image ${BlockImagePosition} ${BlockBackgroundColor} ${(0,_components_global_functions_functions__WEBPACK_IMPORTED_MODULE_2__.getSpacingValues)(BlockSpacingAttributes)}`,
+        className: `text-and-image ${BlockImagePosition} ${BlockBackgroundColor} ${(0,_components_global_functions_functions__WEBPACK_IMPORTED_MODULE_2__.getSpacingValues)(BlockSpacingAttributes)}`,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          class: "container-fluid",
+          className: "container-fluid",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            class: "wrapper",
+            className: "wrapper",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: `container ${BlockContainerWidth}`,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                class: "text-and-image__inner",
+                className: "text-and-image__inner",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  class: "text",
+                  className: "text",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                    class: "text__inner",
+                    className: "text__inner",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                      class: "part-content",
+                      className: "part-content",
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                        class: "heading",
+                        className: "heading",
                         children: [BlockTitle != null && BlockTitle.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                          class: "title",
+                          className: "title",
                           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(RichText.Content, {
                             tagName: BlockTitleTag,
                             className: "rich-block-title",
@@ -1355,7 +1355,7 @@ registerBlockType('rm-alcon-stahl/text-and-image', {
                             value: BlockTitle
                           })
                         }), BlockSubtitle != null && BlockSubtitle.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                          class: "subtitle",
+                          className: "subtitle",
                           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(RichText.Content, {
                             tagName: "p",
                             className: "rich-block-subtitle",

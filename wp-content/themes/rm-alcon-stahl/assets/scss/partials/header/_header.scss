@@ -44,7 +44,7 @@ header {
 
     // ==== Modificator 3. ====
     &.bg-navy-blue:not(.floating-header) {
-        background-color: $sixth-color;
+        background-color: $sixth-color !important;
         box-shadow: none;
 
         .links-holder .links-holder__inner a {
@@ -65,7 +65,7 @@ header {
     }
 
     &.bg-navy-blue.floating-header {
-        background-color: $white;
+        background-color: $white !important;
         box-shadow: 0px 1px 20px 1px rgba(126, 126, 126, 0.25);
         transition: 0.2s ease-out;
 
@@ -88,7 +88,7 @@ header {
 
     // ==== Modificator 3. ====
     &.bg-transparent {
-        background-color: transparent;
+        background-color: transparent !important;
 
         .hamburger-icon,
         .close-icon {
@@ -122,7 +122,7 @@ header {
 
     // ==== Modificator 3. ====
     &.bg-navy-light-blue {
-        background-color: $navy-light-blue;
+        background-color: $navy-light-blue !important;
         box-shadow: none;
 
         .site-logo .logo__figure {

@@ -1,20 +1,61 @@
 .hero-section {
-    min-height: calc(100vh - 122px);
-    padding: 195px 0 163px 0;
-    background-color: $sixth-color;
+    padding: 100px 0;
 
     .hero__inner {
         margin: 0 205px;
         padding-top: 30px;
-        background-image: url("../img/hero/hero-section-background.jpg");
-        background-repeat: no-repeat;
-        background-position: 100% 0;
-        background-size: 656px 654px;
+        position: relative;
+
+        .bg-image {
+            display: block;
+            position: absolute;
+            width: 654px;
+            height: 654px;
+            max-height: 100%;
+            right: 0;
+            top: 0;
+            z-index: 0;
+
+            .image__inner {
+                width: 100%;
+                height: 100%;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    background-color: $pure-black;
+                    opacity: 0.3;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    position: absolute;
+                    z-index: 2;
+                }
+
+                img {
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .hero__title,
+        .cta-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-wrapper {
+            margin-top: 0;
+        }
     }
 
     .hero__inner .hero__title {
-        margin-bottom: 345px;
-        color: $white;
+        padding-bottom: 345px;
 
         h1,
         h2,
@@ -25,12 +66,10 @@
             font-size: 5.6rem;
             line-height: 75px;
             margin-bottom: 0;
-            color: inherit;
         }
 
         .subtitle {
             margin-top: 24px;
-            color: inherit;
             font-family: $font-primary-light-italic;
             font-size: 2.4rem;
             line-height: 3.2rem;
@@ -39,17 +78,24 @@
 
     .button--secondary {
         transition: 0.2s ease;
-       
+
        &.big-arrow-down:hover::after {
             background-image: url("../img/icons/button/icon--big-arrow-down-white.svg") !important;
         }
+    }
+}
 
-        &:hover {
-            transition: 0.2s ease;
-            transform: scale(1.1);
-            background-color: transparent;
-            color: #fff;
-            border-color: white;
+
+.bg-navy-blue,
+.bg-navy-light-blue {
+
+    .bg-image {
+
+        .image__inner {
+
+            &::before {
+                content: none;
+            }
         }
     }
 }
@@ -64,27 +110,17 @@
         padding: 75px 0;
 
         .hero__inner .hero__title {
-            margin-bottom: 400px;
+            padding-bottom: 400px;
         }
     }
 }
 
-@media(max-width: 1199px) {
+@media(max-width: 991px) {
 
     .hero-section {
-        background-image: url("../img/hero/hero-section-background.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
         position: relative;
-
-        &::before {
-            @include pseudo("",100%,100%,absolute);
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            background: #0A1839BF;
-        }
+        min-height: unset;
+        padding: 0;
 
         .container-fluid {
             position: relative;
@@ -94,11 +130,44 @@
         .hero__inner {
             background-image: none;
             margin: 0;
-            padding-top: 0;
+            position: static;
+            padding-top: 50px;
+            padding-bottom: 50px;
+
+            .bg-image {
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: calc(100% + 100px);
+                left: 0;
+                bottom: 0;
+                top: 0;
+                right: 0;
+
+                &::before {
+                    @include pseudo("",100%,100%,absolute);
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    background: #0A1839BF;
+                }
+
+                .image__inner {
+                    width: 100%;
+                    height: 100%;
+
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
         }
 
         .hero__inner .hero__title {
-            margin-bottom: 50px;
+            padding-bottom: 50px;
         }
     }
 }
@@ -106,8 +175,6 @@
 @media(max-width: 576px) {
 
     .hero-section {
-        min-height: calc(100vh - 88px);
-        padding: 150px 0;
 
         .hero__inner .hero__title {
             text-align: center;
@@ -129,7 +196,7 @@
         }
 
         .cta-wrapper {
-            text-align: center;
+            text-align: center !important;
         }
     }
 }

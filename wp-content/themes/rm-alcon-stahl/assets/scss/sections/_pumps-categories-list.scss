@@ -1,0 +1,70 @@
+/*
+    ==== PUMPS CATEGORIES LIST ====
+
+    Description: 
+        Pumps categories list section.
+    
+    Modificators:
+        No modificators.
+*/
+
+.pumps-categories-list {
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    .pumps-categories-list__inner {
+
+        & > {
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: $font-secondary-bold;
+                font-weight: normal;
+                font-size: $extra-large;
+                line-height: 4.8rem;
+                color: #3E3E3E;
+                margin-bottom: 0;
+                margin-top: 0;
+            }
+        }
+    }
+
+    ul {
+        padding-left: 0;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        li {
+            list-style: none;
+
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    ul.main-categories {
+
+        li {
+            font-size: $medium;
+
+            a {
+                font-size: inherit;
+            }
+        }
+    }
+
+    ul.subcategories {
+        padding-left: 22px;
+
+        li {
+            list-style: initial;
+        }
+    }
+}

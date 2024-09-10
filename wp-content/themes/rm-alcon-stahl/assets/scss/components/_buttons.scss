@@ -64,40 +64,27 @@ a.button {
 
 // ==== Modificator 1. ====
 .button--primary {
-    background-color: $button-color-gray;
-    color: $button-color-white;
-    border-color: $button-color-white;
+    background-color: $button-color-white;
+    color: $button-color-blue;
+    border-color: $button-color-blue;
 
     &:hover {
-        background-color: $button-color-white;
-        color: $button-color-blue;
+        background-color: $button-color-blue;
+        color: $button-color-white;
         border-color: 1px solid transparent;
     }
 }
 
 // ==== Modificator 2. ====
 .button--secondary {
-    background-color: transparent;
+    background-color: $button-color-blue;
     color: $button-color-white;
-    border-color: $button-color-white;
-    
+    border-color: 1px solid transparent;
+
     &:hover {
         background-color: $button-color-white;
-        border-color: transparent;
         color: $button-color-blue;
-    }
-}
-
-// ==== Modificator 3. ====
-.button--tertiary {
-    background-color: transparent;
-    color: $button-color-blue;
-    border-color: $button-color-blue;
-    
-    &:hover {
-        background-color: $button-color-blue;
-        border-color: transparent;
-        color: $button-color-white;
+        border-color: $button-color-blue;
     }
 }
 
@@ -144,4 +131,53 @@ a.button {
         transform: scale(1.1);
         transition: 0.3s ease;
     }
-} 
+}
+
+
+
+// ==== Background color modifications ====
+
+.bg-navy-blue,
+.bg-navy-light-blue,
+.has-bg-image {
+
+    .button--primary {
+        border: 1px solid $button-color-white;
+        color: $button-color-white;
+        background-color: $button-color-blue;
+
+        &:hover {
+            color: $button-color-blue;
+            background-color: $button-color-white;
+        }
+    }
+
+    .button--secondary {
+        background-color: $button-color-white;
+        border: 1px solid $button-color-white;
+        color: $button-color-blue;
+
+        &:hover {
+            background-color: $button-color-blue;
+            color: $button-color-white;
+        }
+    }
+}
+
+.has-bg-image {
+
+    .button--primary {
+
+        &:hover {
+            background-color: $white !important;
+        }
+    }
+
+    .button--secondary {
+        color: $button-color-blue !important;
+
+        &:hover {
+            color: $white !important;
+        }
+    }
+}
