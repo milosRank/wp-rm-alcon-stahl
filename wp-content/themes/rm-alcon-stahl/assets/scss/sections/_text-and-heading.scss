@@ -142,6 +142,13 @@
             max-width: unset;
         }
     }
+
+    &.text-center {
+
+        .text-and-heading__inner {
+            margin: 0 auto;
+        }
+    }
 }
 
 

@@ -3,7 +3,7 @@
     <!-- Main start -->
     <main>
 
-        <section class="text-and-heading text-center error" id="inox-limovi">
+        <section class="text-and-heading text-center error">
             <div class="container-fluid">
                 <div class="wrapper">
                     <div class="container">

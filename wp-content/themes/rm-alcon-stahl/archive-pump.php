@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <!-- Page header start -->
-<section class="page-header page-header-bg--pumpe margin-bottom-0">
+<section class="page-header page-header-bg--pumpe has-bg-image margin-bottom-0">
     <div class="container-fluid">
         <div class="wrapper">
             <div class="container">

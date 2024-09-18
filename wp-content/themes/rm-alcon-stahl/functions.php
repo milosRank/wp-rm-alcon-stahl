@@ -174,6 +174,7 @@ function add_wrapper_to_blocks($block_content, $block) {
         if ( strpos( $block_name, 'rm-alcon-stahl/' ) === 0 ) {
             $custom_blocks[] = $block_name;
         }
+
     }
 
     // Check if current block is custom block
@@ -185,7 +186,7 @@ function add_wrapper_to_blocks($block_content, $block) {
     // Add wrapper only for certain blocks, if needed
     if ( ! is_admin() ) {
         return 
-        '<section>' .
+        '<div>' .
             '<div class="container-fluid">' .
                 '<div class="wrapper">' .
                     '<div class="container">' .
@@ -193,7 +194,7 @@ function add_wrapper_to_blocks($block_content, $block) {
                     '</div>' . 
                 '</div>' .
             '</div>' .
-        '</section>';
+        '</div>';
     }
     return $block_content;
 
