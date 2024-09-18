@@ -12,6 +12,25 @@ if ($query->have_posts()) :
 
 ?>
 
+        <!-- Page header start -->
+        <section class="page-header bg-navy-light-blue margin-bottom-0">
+            <div class="container-fluid">
+                <div class="wrapper">
+                    <div class="container">
+
+                        <!-- Page header inner start -->
+                        <div class="page-header__inner">
+
+                            <div class="title">
+                                <h1>Blog</h1>
+                            </div>
+                        </div> <!-- Page header inner end -->
+
+                    </div>
+                </div>
+            </div>
+        </section> <!-- Page header end -->
+
         <!-- Elements list start -->
         <section class="elements-list pumps padding-top-100 padding-bottom-100">
             <div class="container-fluid">
@@ -26,6 +45,13 @@ if ($query->have_posts()) :
                                 <!-- Element start -->
                                 <div class="element">
                                     <div class="element__inner">
+                                        <div class="image-box shadow">
+                                            <?php if (has_post_thumbnail()) : ?>
+                                                <?php the_post_thumbnail('medium'); ?>
+                                                <?php else : ?>
+                                                    <img src="<?= get_template_directory_uri() . '/assets/img/no-image/pump-thumbnail.webp' ?>" />
+                                                <?php endif; ?>
+                                            </div>
                                         <div class="title">
                                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                         </div>
