@@ -7,14 +7,15 @@
 window.addEventListener("load", () => {
     floatingHeader();
     initDropdown(".header__links-list");
-    equalizeElementHeight(".elements-list.pumps .description",547);
+    equalizeElementHeight(".elements-list.pumps .description", 547);
+    equalizeElementHeight(".elements-list.pumps .element .title", 547);
 });
 
 
 
 // ==== SCROLL EVENT ====
 
-document.addEventListener("scroll", function() {
+document.addEventListener("scroll", function () {
     getScrollDirection();
     floatingHeader();
 });
@@ -23,22 +24,19 @@ document.addEventListener("scroll", function() {
 
 // ==== RESIZE EVENT ====
 
-window.addEventListener("resize", function() {
-    
-    equalizeElementHeight(".elements-list.pumps .description",547);
+window.addEventListener("resize", function () {
+
+    equalizeElementHeight(".elements-list.pumps .description", 547);
+    equalizeElementHeight(".elements-list.pumps .element .title", 547);
+
 
     lockScreenDependingOnCondition(function () {
 
         // Lock screen
-        if(isMobileMenuActive() && window.innerWidth <= 576) return true;
-
-        // if(popup) {
-        //     // Lock screen
-        //     if(popup.classList.contains(ACTIVE_CLASS)) return true;
-        // }
+        if (isMobileMenuActive() && window.innerWidth <= 576) return true;
 
         // Unlock screen
         return false;
     });
-    
+
 });

@@ -44,6 +44,12 @@
         width: 904px;
         margin-right: 168px;
 
+        .table > div .container-fluid,
+        .table > div .container {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
         .table + .table {
             margin-top: 150px;
         }

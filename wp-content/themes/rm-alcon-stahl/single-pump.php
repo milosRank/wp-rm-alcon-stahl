@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-
-
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 <?php 
@@ -59,9 +57,36 @@
         </div>
     </section> <!-- Table and image end -->
 
+    <section class="text-and-heading text-center bg-navy-blue padding-bottom-0">
+        <div class="container-fluid">
+            <div class="wrapper">
+                <div class="container container-extra-narrow">
+
+                    <!-- Text and heading inner start -->
+                    <div class="text-and-heading__inner">
+
+                        <div class="title">
+                            <h2>Želite da saznate više o ovom proizvodu?</h2>
+                        </div>
+
+                        <div class="subtitle">
+                            <p>Pošaljite nam poruku i naš tim će vas kontaktirati ubrzo.</p>
+                        </div>
+
+                    </div> <!-- Text and heading inner end -->
+
+                    <div class="cta-wrapper text-center margin-top-50">
+                        <a href="<?= get_permalink( get_page_by_path( 'contact' ) ); ?>" class="button button--primary">Pošaljite poruku</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
 <?php endwhile; else : ?>
 
-    <section class="text-and-heading text-center error" id="inox-limovi">
+        <section class="text-and-heading text-center error">
             <div class="container-fluid">
                 <div class="wrapper">
                     <div class="container">
@@ -70,7 +95,7 @@
                         <div class="text-and-heading__inner">
 
                             <div class="title">
-                                <h2>Greska. Nazad na</h2>
+                                <h2>Greška. Proizvod nije pronadjen.</h2>
                             </div>
 
                         </div> <!-- Text and heading inner end -->
